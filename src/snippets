@@ -1,0 +1,41 @@
+// pure Component
+
+class  ... extends React.PureComponent {
+  static PropTypes = {
+
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+
+    );
+  }
+}
+
+// component
+
+class ... extends React.Component {
+  static PropTypes = {
+
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+
+    );
+  }
+}
+
+// functional component
+
+const ... = (props) => {
+
+}

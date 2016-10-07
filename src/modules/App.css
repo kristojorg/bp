@@ -1,0 +1,43 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+.menuBar {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.navLink {
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.name {
+  text-decoration: none;
+  color: black;
+  font-family: 'Permanent Marker';
+  font-size: 50px;
+  transform: rotate(-25deg);
+  text-align: center;
+  line-height: 1;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.activeNavLink {
+  color: purple;
+}
