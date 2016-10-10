@@ -58,14 +58,20 @@ const NavLink = ({label, ...props}) => {
 NavLink.propTypes = {
 };
 
-
-
 const Footer = (props) => {
   return (
-    <div>
-      Footer
+    <div className="footer" >
+      <a className="footerItem" href="mailto:beahelman@yahoo.com">beahelman@yahoo.com</a>
     </div>
   )
 }
 Footer.propTypes = {
+};
+
+const FooterItem = (props) => {
+  return (
+    <div>MyComponent</div>
+  )
+}
+FooterItem.propTypes = {
 };

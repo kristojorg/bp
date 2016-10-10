@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import WebFont from 'webfontloader';
 
 import logo from './logo.svg';
@@ -14,13 +14,13 @@ class Root extends Component {
   componentWillMount () {
     WebFont.load({
       google: {
-        families: ['Concert One', 'Permanent Marker']
+        families: ['Concert One', 'Permanent Marker', 'Josefin Sans']
       }
     })
   }
   render() {
     return (
-      <Router history={hashHistory}>
+      <Router history={browserHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
           <Route path="/photos" component={Photos}/>

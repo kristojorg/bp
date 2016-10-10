@@ -1,6 +1,9 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 
+import './Home.css';
+import cover from '../assets/cover.jpg'
+
 export default class Home extends Component {
 
   static propTypes = {
@@ -9,8 +12,9 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
-        Hello from home.
+      <div className="wrapper" >
+        <img src={cover} className="cover" />
+        {/* <div className="coverDiv" /> */}
       </div>
     );
   }

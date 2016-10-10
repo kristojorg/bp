@@ -7,12 +7,14 @@
 
 .mainContent {
   flex: 1;
+  display: flex;
 }
 
 .menuBar {
   display: flex;
   flex-direction: row;
-
+  flex-shrink: 0;
+  align-items: flex-start;
 }
 
 .navLink {
@@ -40,4 +42,24 @@
 
 .activeNavLink {
   color: purple;
+}
+
+.footer {
+  /*background-color: grey;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*margin-top: 20px;*/
+  padding: 20px;
+}
+
+.footerItem {
+  padding: 20px;
+  font-family: sans-serif;
+  color: #ababab;
+  text-decoration: none;
+}
+
+.footerItem:hover {
+  text-decoration: underline;;
 }
