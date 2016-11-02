@@ -1,13 +1,17 @@
 .app {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
+  background-color: #E4C7CA;
 }
 
 .mainContent {
   flex: 1;
   display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  align-items: stretch;
 }
 
 .menuBar {
@@ -21,7 +25,8 @@
   text-align: center;
   padding: 20px;
   text-decoration: none;
-  color: black;
+  color: #2E392C;
+  font-family: 'Concert One';
 }
 
 .navLink:hover {
@@ -30,7 +35,7 @@
 
 .name {
   text-decoration: none;
-  color: black;
+  color: #2E392C;
   font-family: 'Permanent Marker';
   font-size: 50px;
   transform: rotate(-25deg);
@@ -40,17 +45,23 @@
   margin-bottom: 20px;
 }
 
+.phone {
+  font-size: 25px;
+  padding-left: 10px;
+  margin-bottom: 0px;
+}
+
 .activeNavLink {
-  color: purple;
+  color: #9396BA;
 }
 
 .footer {
-  /*background-color: grey;*/
+  background-color: rgba(128, 128, 128, 0.07);
   display: flex;
   align-items: center;
   justify-content: center;
   /*margin-top: 20px;*/
-  padding: 20px;
+  padding: 5px;
 }
 
 .footerItem {

@@ -1,11 +1,13 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {Link, IndexLink} from 'react-router';
+import { applyContainerQuery } from 'react-container-query';
+import classnames from 'classnames';
 
+import {PHONE_QUERY} from '../constants';
 import './App.css';
-import {Text} from '../components/text';
 
-export default class App extends Component {
+class App extends Component {
 
   static propTypes = {
 
@@ -14,7 +16,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="app" >
-        <MenuBar />
+        <MenuBar containerQuery={this.props.containerQuery}/>
         <div className="mainContent" >
           {this.props.children}
         </div>
@@ -24,11 +26,11 @@ export default class App extends Component {
   }
 }
 
-const MenuBar = (props) => {
+const MenuBar = ({containerQuery}) => {
   return (
     <div className="menuBar" >
-      <Name />
-      <NavLink to="/photos" label="photos" />
+      <Name phone={containerQuery.phone} />
+      <NavLink to="/albums" label="photos" />
       <NavLink to="/writing" label="writing" />
       <NavLink to="/blog" label="blog" />
 
@@ -38,9 +40,9 @@ const MenuBar = (props) => {
 MenuBar.propTypes = {
 };
 
-const Name = () => {
+const Name = ({phone}) => {
   return (
-    <IndexLink to="/" className="name" activeClassName="activeNavLink">
+    <IndexLink to="/" className={classnames('name',{phone})} activeClassName="activeNavLink">
       Bea<br />Helman
     </IndexLink>
   )
@@ -51,7 +53,7 @@ Name.propTypes = {
 const NavLink = ({label, ...props}) => {
   return (
       <Link {...props} className="navLink" activeClassName="activeNavLink">
-        <Text>{label}</Text>
+        {label}
       </Link>
   )
 }
@@ -75,3 +77,6 @@ const FooterItem = (props) => {
 }
 FooterItem.propTypes = {
 };
+
+const WrappedApp = applyContainerQuery(App, PHONE_QUERY);
+export default WrappedApp;

@@ -1,0 +1,52 @@
+.albums {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 935px;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 20px;
+}
+
+.album {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 293px;
+  height: 293px;
+  text-decoration: none;
+  overflow: hidden;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgba(255,255,255,0.3);
+}
+
+.album-image {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.albumCover {
+  /*flex: 1;*/
+  object-fit: contain;
+  overflow: hidden;
+  width: 100%;
+  max-height: 100%;
+}
+
+.album:hover, .album:active {
+  background-color: rgba(255,255,255,0.6);
+}
+
+.title {
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  color: #2E392C;
+  font-family: 'Concert One';
+}
