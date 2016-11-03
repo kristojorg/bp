@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import Prismic from 'prismic.io';
 
-import PDF from '../components/PDF';
-import {Album} from './Albums';
 import { API_ROOT } from '../constants.js';
 import './Writing.css';
 
@@ -34,10 +32,37 @@ export default class Writing extends Component {
   }
 
   render() {
+
+    let samples = null;
+    if (this.state.samples) {
+      samples = this.state.samples.map(sample =>
+        <SampleCover
+          key={sample.id}
+          cover={sample.data['writing-sample.cover'].value.main.url}
+          title={sample.data['writing-sample.title'].value[0].text}
+          uid={sample.uid}
+          category="writing"
+          // url={sample.data}
+          link={`http://docs.google.com/gview?url=${sample.fragments['writing-sample.pdf'].value.file.url}`}
+        />
+      )
+    }
+
     return (
       <div>
-        Hello from writing.
+        {samples}
       </div>
     );
   }
+}
+
+const SampleCover = ({cover, title, uid, link}) => {
+  return (
+    <a className="album" href={link}>
+      <div className="album-image" >
+        <img src={cover} className="albumCover" alt="album" />
+      </div>
+      <span className="title">{title}</span>
+    </a>
+  )
 }

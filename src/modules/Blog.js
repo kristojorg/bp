@@ -3,12 +3,18 @@ import React, { Component } from 'react';
 import Prismic from 'prismic.io';
 import _ from 'lodash';
 import moment from 'moment';
-import { applyContainerQuery } from 'react-container-query';
+import ContainerQuery from 'react-container-query';
 import classNames from 'classnames';
 
 
 import { API_ROOT } from '../constants.js';
 import './Blog.css';
+
+export const QUERY = {
+  'small': {
+    maxWidth: 760,
+  }
+};
 
 class Blog extends Component {
 
@@ -36,24 +42,27 @@ class Blog extends Component {
     });
   }
 
-  render() {
-
+  renderPosts = (query) => {
+    console.log('QUERY', query);
     let posts = null;
     if (this.state.posts) {
       posts = this.state.posts.map((post,i) =>
         <Post
           post={post}
           key={post.uid}
-          small={this.props.containerQuery.small}
+          small={query.small}
         />
       );
     }
-    console.log('PROPS', this.props.containerQuery);
-    return (
+    return posts;
+  }
 
-      <div className="blog" >
-        {posts}
-      </div>
+  render() {
+
+    return (
+      <ContainerQuery query={QUERY} className='blog'>
+        {(query) => this.renderPosts(query)}
+      </ContainerQuery>
     );
   }
 }
@@ -89,11 +98,4 @@ const Post = ({post, small}) => {
   )
 }
 
-export const QUERY = {
-  'small': {
-    maxWidth: 760,
-  }
-};
-
-const WrappedBlog = applyContainerQuery(Blog, QUERY);
-export default WrappedBlog;
+export default Blog;

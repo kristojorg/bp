@@ -52,9 +52,9 @@ class Albums extends Component {
   }
 }
 
-export const Album = ({cover, title, uid}) => {
+export const Album = ({cover, title, uid, category = 'albums'}) => {
   return (
-    <Link className="album" to={`albums/${uid}`}>
+    <Link className="album" to={`${category}/${uid}`}>
       <div className="album-image" >
         <img src={cover} className="albumCover" alt="album" />
       </div>

@@ -6,6 +6,15 @@
   background-color: #E4C7CA;
 }
 
+.insideQuery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  background-color: #E4C7CA;
+}
+
 .mainContent {
   flex: 1;
   display: flex;
@@ -47,7 +56,7 @@
 
 .phone {
   font-size: 25px;
-  padding-left: 10px;
+  /*padding-left: 10px;*/
   margin-bottom: 0px;
 }
 

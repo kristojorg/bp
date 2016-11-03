@@ -9,6 +9,7 @@ import Albums from './modules/Albums.js';
 import Writing from './modules/Writing';
 import Blog from './modules/Blog';
 import Gallery from './modules/Gallery';
+import PDFView from './modules/PDFView';
 
 class Root extends Component {
   componentWillMount () {
@@ -29,7 +30,10 @@ class Root extends Component {
                 {/* <Route path="/:photo" component={Photo}/> */}
               </Route>
           </Route>
-          <Route path="/writing" component={Writing}/>
+          <Route path="/writing" component={null}>
+            <IndexRoute component={Writing} />
+              <Route path="/writing/:sample" component={PDFView} />
+          </Route>
           <Route path="/blog" component={Blog}/>
         </Route>
       </Router>

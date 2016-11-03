@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import {Link, IndexLink} from 'react-router';
-import { applyContainerQuery } from 'react-container-query';
+import ContainerQuery from 'react-container-query';
 import classnames from 'classnames';
 
 import {PHONE_QUERY} from '../constants';
@@ -15,13 +15,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app" >
-        <MenuBar containerQuery={this.props.containerQuery}/>
-        <div className="mainContent" >
-          {this.props.children}
-        </div>
-        <Footer />
-      </div>
+      <ContainerQuery query={PHONE_QUERY} className='app'>
+        {(params) => (
+          <div className="insideQuery" >
+            <MenuBar containerQuery={params}/>
+            <div className="mainContent" >
+              {this.props.children}
+            </div>
+            <Footer />
+          </div>
+        )}
+      </ContainerQuery>
     );
   }
 }
@@ -78,5 +82,5 @@ const FooterItem = (props) => {
 FooterItem.propTypes = {
 };
 
-const WrappedApp = applyContainerQuery(App, PHONE_QUERY);
-export default WrappedApp;
+// const WrappedApp = applyContainerQuery(App, PHONE_QUERY);
+export default App;

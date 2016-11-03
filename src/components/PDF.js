@@ -1,30 +1,33 @@
-import React from 'react';
-// import PDF from 'react-pdf-js';
+import React, {PropTypes} from 'react';
+import PDF from 'react-pdf-js';
 
 class PDFViewer extends React.Component {
 
   static propTypes = {
-    // file: PropTypes.
+    file: PropTypes.string,
   }
 
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: null
+    };
+  }
 
   onDocumentComplete = (pages) => {
-    this.setState({ page: 1, pages });
+    // this.setState({ page: 1, pages });
   }
 
   onPageComplete = (page) => {
-    this.setState({ page });
+    // this.setState({ page });
   }
 
   handlePrevious = () => {
-    this.setState({ page: this.state.page - 1 });
+    // this.setState({ page: this.state.page - 1 });
   }
 
   handleNext = () => {
-    this.setState({ page: this.state.page + 1 });
+    // this.setState({ page: this.state.page + 1 });
   }
 
   renderPagination(page, pages) {
@@ -48,13 +51,19 @@ class PDFViewer extends React.Component {
 
   render() {
     let pagination = null;
+    let pdfs = [];
     if (this.state.pages) {
       pagination = this.renderPagination(this.state.page, this.state.pages);
+      for (let i = 0; i<this.state.pages; i++){
+        pdfs[i] = <PDF file={this.props.file} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={i} />
+      }
+
     }
     return (
       <div>
         {/* <PDF file={this.props.file} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} /> */}
-        {pagination}
+        {/* {pagination} */}
+        {pdfs}
       </div>
     );
   }
