@@ -46,7 +46,7 @@ MenuBar.propTypes = {
 
 const Name = ({phone}) => {
   return (
-    <IndexLink to="/" className={classnames('name',{phone})} activeClassName="activeNavLink">
+    <IndexLink to="/" className={classnames('name',{phoneNav:phone})} activeClassName="activeNavLink">
       Bea<br />Helman
     </IndexLink>
   )
@@ -67,7 +67,7 @@ NavLink.propTypes = {
 const Footer = (props) => {
   return (
     <div className="footer" >
-      <a className="footerItem" href="mailto:beahelman@yahoo.com">beahelman@yahoo.com</a>
+      <a className="footerItem" href="mailto:beatricehelman@gmail.com">beatricehelman@gmail.com</a>
     </div>
   )
 }

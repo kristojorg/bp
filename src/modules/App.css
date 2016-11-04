@@ -36,6 +36,7 @@
   text-decoration: none;
   color: #2E392C;
   font-family: 'Concert One';
+  font-size: 16px;
 }
 
 .navLink:hover {
@@ -54,9 +55,9 @@
   margin-bottom: 20px;
 }
 
-.phone {
+.phoneNav {
   font-size: 25px;
-  /*padding-left: 10px;*/
+  padding-left: 10px;
   margin-bottom: 0px;
 }
 
@@ -81,5 +82,15 @@
 }
 
 .footerItem:hover {
-  text-decoration: underline;;
+  text-decoration: underline;
+}
+
+.fadeIn-appear {
+  background-color: #E4C7CA;
+  opacity: 0.01;
+}
+
+.fadeIn-appear.fadeIn-appear-active {
+  opacity: 1;
+  transition: opacity .7s ease-in;
 }

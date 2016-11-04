@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import Prismic from 'prismic.io';
-import _ from 'lodash';
 import moment from 'moment';
 import ContainerQuery from 'react-container-query';
 import classNames from 'classnames';
@@ -91,8 +90,10 @@ const Post = ({post, small}) => {
   }
   return(
     <div className={classNames("post", {smallBlog: small})} >
-      <h1 className="postTitle">{title}</h1>
-      <div className="postDate">{moment(date).format('MMM Do YYYY')}</div>
+      <div className="postHeader" >
+        <h1 className="postTitle">{title}</h1>
+        <div className="postDate">{moment(date).format('MMM Do YYYY')}</div>
+      </div>
       <div className="postBody" dangerouslySetInnerHTML={{__html:body}} />
     </div>
   )

@@ -9,35 +9,57 @@ import Albums from './modules/Albums.js';
 import Writing from './modules/Writing';
 import Blog from './modules/Blog';
 import Gallery from './modules/Gallery';
-import PDFView from './modules/PDFView';
+import FadeIn from './components/FadeIn';
 
 class Root extends Component {
-  componentWillMount () {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontsReady: false
+    };
+  }
+  componentWillMount = () => {
     WebFont.load({
       google: {
-        families: ['Concert One', 'Permanent Marker', 'Josefin Sans', 'Crimson Text', 'Open Sans']
-      }
+        families: ['Concert One', 'Permanent Marker', 'Open Sans', 'Cabin', 'Signika']
+      },
+      active: () => this.setState({fontsReady:true})
     })
   }
+
   render() {
-    return (
-      <Router history={browserHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={Home}/>
-          <Route path="/albums" component={null} >
-            <IndexRoute component={Albums} />
-              <Route path="/albums/:album" component={Gallery}>
-                {/* <Route path="/:photo" component={Photo}/> */}
+    console.log('STATE OF ROOT', this.state);
+
+    let root = <div className="app" />;
+    if (this.state.fontsReady) {
+      root = (
+        <FadeIn>
+          <Router key="appRouteRouter" history={browserHistory}>
+            <Route path="/" component={App}>
+              <IndexRoute component={Home}/>
+              <Route path="/albums" component={null} >
+                <IndexRoute component={Albums} />
+                  <Route path="/albums/:album" component={Gallery}>
+                    {/* <Route path="/:photo" component={Photo}/> */}
+                  </Route>
               </Route>
-          </Route>
-          <Route path="/writing" component={null}>
-            <IndexRoute component={Writing} />
-              <Route path="/writing/:sample" component={PDFView} />
-          </Route>
-          <Route path="/blog" component={Blog}/>
-        </Route>
-      </Router>
-    );
+              <Route path="/writing" component={Writing}>
+                {/* <IndexRoute component={Writing} />
+                  <Route path="/writing/:sample" component={PDFView} /> */}
+              </Route>
+              <Route path="/blog" component={Blog}/>
+            </Route>
+          </Router>
+        </FadeIn>
+      );
+    }
+
+    return (
+      <FadeIn>
+        {root}
+      </FadeIn>
+    )
   }
 }
 

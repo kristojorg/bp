@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import Prismic from 'prismic.io';
-import _ from 'lodash';
 import Lightbox from 'react-images';
 
 
