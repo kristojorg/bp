@@ -2,7 +2,7 @@
 Goals of this Component
 
 props {
-  display: 'cover' | 'fit'
+  display: 'cover' | 'contain'
   src
   fade: bool
   background color
@@ -28,7 +28,6 @@ import classnames from 'classnames';
 
 import './Image.css';
 
-const testURL='https://prismic-io.s3.amazonaws.com/bea-helman/72688bef7bc7e0b909b0db765e1e0a757fd63dca_r2-01544-016a.jpg';
 
 export default class Image extends React.PureComponent {
 
@@ -36,7 +35,7 @@ export default class Image extends React.PureComponent {
     fade: true,
     backgroundColor: 'rgba(0,0,0,0.1)',
     alt: 'image',
-    display: 'fit'
+    display: 'contain'
   }
 
   constructor(props){
@@ -52,62 +51,55 @@ export default class Image extends React.PureComponent {
     })
   }
 
-  imageStyler = () => {
-    // if it is wider, make width 100%
-    if (this.props.width >= this.props.height) {
-      return {
-        width: '100%',
-        height: 0,
-        paddingTop: `${(this.props.height/this.props.width)*100}%`,
-        backgroundColor: this.props.backgroundColor,
-        position: 'relative',
-      }
-    } else {
-      // it is taller than it is wide
-      return {
-        width: `${(this.props.width/this.props.height)*100}%`,
+  render() {
+    const {display, src, fade, width, height, alt, className, backgroundColor} = this.props;
+
+    const IMG = {
+      contain: {
+        backgroundColor: height && width && backgroundColor,
         height: '100%',
-        backgroundColor: this.props.backgroundColor,
-        position: 'relative',
+        width: '100%',
       }
     }
-  }
 
-  render() {
-    const {display, src, fade, width, height, alt, className} = this.props;
-
-
-    // TODO: when rendering a div, figure out the sizing...
-    if (display === 'fit' && height && width) {
+    // if we want to contain, maintain aspect ratio of image.
+    if (display === 'contain' && height && width) {
       return (
-        <div className={classnames(className, 'image-wrapper')}>
-          <div
-            className="pseudo"
-            style={this.imageStyler()}
-          >
+        <AspectRatio
+          height={height}
+          width={width}
+        >
+          <div style={IMG.contain} className={className}>
             <img
               alt={alt}
-              className={classnames({imageLoaded: this.state.loaded, fadeImageIn: this.props.fade},'image-element')}
+              className={
+                classnames({
+                  imageLoaded: this.state.loaded,
+                  fadeImageIn: fade,
+                  'image-contain':display === 'contain',
+                  'image-cover': display === 'cover'},
+                  'image-element'
+                )}
               src={src}
               onLoad={this.onImageLoad}
             />
           </div>
-        </div>
+        </AspectRatio>
       )
     }
+
+    // if we want to cover, do not maintain aspect ratio and just
+    // make it 100% width and height.
+
     return (
-      <div
-        className={classnames(className, 'image-wrapper')}
-        // only show background if you have a width and height.
-        style={{backgroundColor: width && height && this.props.backgroundColor}}
-      >
+      <div style={IMG.contain} className={className}>
         <img
           alt={alt}
           className={
             classnames({
               imageLoaded: this.state.loaded,
-              fadeImageIn: this.props.fade,
-              'image-fit':display === 'fit',
+              fadeImageIn: fade,
+              'image-contain':display === 'contain',
               'image-cover': display === 'cover'},
               'image-element'
             )}
@@ -117,4 +109,71 @@ export default class Image extends React.PureComponent {
       </div>
     )
   }
+}
+
+const AR = {
+  cover: {
+    position: 'relative',
+    height: '100%',
+    width: '100%',
+    textAlign: 'center',
+  },
+
+  wrapper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+  },
+
+  svg: {
+    width: 'auto',
+    height: 'auto',
+    maxWidth: '100%',
+    maxHeight: '100%',
+    verticalAlign:'bottom',
+  },
+
+  positioner: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+
+  contentBox: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'normal',
+  }
+}
+
+/*
+<AspectRatio> will wrap children in a box of the specified aspect ratio
+
+This box will grow to fit the container it is in, respecting ratio...
+
+Children should be set to height, width 100%.
+*/
+const AspectRatio = ({height, width, children}) => {
+
+  const paddingTop = `${(height/width) * 100}%`;
+
+  return (
+    <div style={AR.cover}>
+      {/* use a span bc it will fit top bottom right of svg */}
+      <span style={AR.wrapper}>
+        {/* Use an SVG to set the aspect ratio inside the span */}
+        <svg width={width} height={height} style={AR.svg} />
+        <div style={AR.positioner}>
+          <div style={{paddingTop}}>
+            <div style={AR.contentBox}>
+              {children}
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  )
 }

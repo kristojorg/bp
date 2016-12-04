@@ -38,11 +38,11 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="wrapper" >
+      <div className="cover">
         <Image
           alt="Banner"
           src={this.state.banner}
-          className="cover"
+          // className="cover"
           height={this.state.dimensions.height}
           width={this.state.dimensions.width}
         />

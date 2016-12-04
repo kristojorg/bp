@@ -1,14 +1,6 @@
-.wrapper {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
 .cover {
   max-width: 80%;
   max-height: 60vh;
-  object-fit: contain;
 }
 .coverDiv {
   width: 80%;

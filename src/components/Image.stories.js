@@ -28,7 +28,7 @@ storiesOf('Image', module)
     <div style={{width:400,height:400}} onClick={linkTo('Image','Unloaded.Tall')}>
       <Image
         src={testURLTall}
-        width={740}
+        width={750}
         height={1334}
       />
     </div>
@@ -37,7 +37,7 @@ storiesOf('Image', module)
     <div style={{width:400,height:400}} onClick={linkTo('Image','Loaded.Tall')} >
       <Image
         src={null}
-        width={740}
+        width={750}
         height={1334}
       />
     </div>

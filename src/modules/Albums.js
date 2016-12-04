@@ -61,13 +61,15 @@ export const Album = ({cover, title, uid, category = 'albums', height, width}) =
   return (
     <Link className="album" to={`${category}/${uid}`}>
       <div className="album-image" >
-        <Image
-          src={cover}
-          className="albumCover"
-          alt="album"
-          height={height}
-          width={width}
-        />
+        <div >
+          <Image
+            src={cover}
+            className="albumCover"
+            alt="album"
+            height={height}
+            width={width}
+          />
+        </div>
       </div>
       <span className="title">{title}</span>
     </Link>
