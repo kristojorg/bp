@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 import Prismic from 'prismic.io';
 import Lightbox from 'react-images';
 
-
 import { API_ROOT } from '../constants.js';
-import './Gallery.css';
-import Image from '../components/Image';
+import './Gallery.css'
+import './SampleView.css';
 
-export default class Albums extends Component {
+export default class SampleView extends Component {
 
   static propTypes = {
 
@@ -20,16 +19,18 @@ export default class Albums extends Component {
       images: null,
       lightboxOpen: false,
       currentIndex: 4,
+      title: null,
     };
   }
 
   componentDidMount() {
     Prismic.api(API_ROOT).then(api => {
-      return api.getByUID('album',this.props.params.album);
+      return api.getByUID('writing-sample',this.props.params.sample);
     }).then(response => {
-      console.log("Documents: ", response);
+      console.log("Documents: ", response, response.getStructuredText('writing-sample.title'));
       this.setState({
-        images: response.data['album.image-gallery'].value,
+        images: response.data['writing-sample.image-gallery'].value,
+        title: response.getStructuredText('writing-sample.title').asText(),
       })
     }, err => {
       console.error("Something went wrong: ", err);
@@ -77,19 +78,17 @@ export default class Albums extends Component {
         return thing;
       });
       images = this.state.images.map((image,i) =>
-        <ImageCust
+        <Image
           key={i}
           index={i}
           url={image.image.value.main.url}
           openLightbox={this.openLightbox}
-          height={image.image.value.main.dimensions.height}
-          width={image.image.value.main.dimensions.width}
         />
       );
     }
-    console.log('THIS', light, this.state);
     return (
-      <div className="galleryWrap" >
+      <div className="galleryWrap sampleGallery" >
+        {this.state.title ? <h2>{`${this.state.title}`}</h2> : null}
         <div className="gallery" >
           {images}
         </div>
@@ -108,18 +107,12 @@ export default class Albums extends Component {
   }
 }
 
-const ImageCust = ({url, index, openLightbox, height, width}) => {
+const Image = ({url, index, openLightbox}) => {
 
   return (
     <a className="imageWrapper" onClick={() => openLightbox(index)}>
       <div className="contentWrapper" >
-        <Image
-          src={url}
-          className="image"
-          alt="Item"
-          height={height}
-          width={width}
-        />
+        <img src={url} className="image" alt="Item" />
       </div>
     </a>
   )

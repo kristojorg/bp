@@ -4,6 +4,7 @@ import Prismic from 'prismic.io';
 
 import { API_ROOT } from '../constants';
 import './Home.css';
+import Image from '../components/Image';
 
 export default class Home extends Component {
 
@@ -14,6 +15,10 @@ export default class Home extends Component {
     super(props);
     this.state = {
       banner: null,
+      dimensions: {
+        height: null,
+        width: null,
+      },
     };
   }
 
@@ -24,6 +29,7 @@ export default class Home extends Component {
       console.log("Documents: ", response);
       this.setState({
         banner: response.data['homepage.mainPhoto'].value.main.url,
+        dimensions: response.data['homepage.mainPhoto'].value.main.dimensions,
       })
     }, err => {
       console.error("Something went wrong: ", err);
@@ -33,7 +39,13 @@ export default class Home extends Component {
   render() {
     return (
       <div className="wrapper" >
-        <img alt="Banner" src={this.state.banner} className="cover" />
+        <Image
+          alt="Banner"
+          src={this.state.banner}
+          className="cover"
+          height={this.state.dimensions.height}
+          width={this.state.dimensions.width}
+        />
       </div>
     );
   }

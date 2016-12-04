@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import Prismic from 'prismic.io';
+import {Link} from 'react-router';
 
 import { API_ROOT } from '../constants.js';
 import './Writing.css';
@@ -42,7 +43,7 @@ export default class Writing extends Component {
           title={sample.data['writing-sample.title'].value[0].text}
           uid={sample.uid}
           category="writing"
-          // url={sample.data}
+          slug={sample.slug}
           link={`http://docs.google.com/gview?url=${sample.fragments['writing-sample.pdf'].value.file.url}`}
         />
       )
@@ -56,13 +57,13 @@ export default class Writing extends Component {
   }
 }
 
-const SampleCover = ({cover, title, uid, link}) => {
+const SampleCover = ({cover, title, uid, link, slug}) => {
   return (
-    <a className="album" href={link}>
+    <Link className="album" to={`/writing/${slug}`}>
       <div className="album-image" >
         <img src={cover} className="albumCover" alt="album" />
       </div>
       <span className="title">{title}</span>
-    </a>
+    </Link>
   )
 }

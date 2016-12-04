@@ -1,0 +1,20 @@
+.sampleGallery h2 {
+  margin-top: 0px;
+}
+
+.sampleGallery {
+  flex-direction: column;
+  text-align: center;
+}
+
+.sampleGallery .gallery {
+  justify-content: space-between;
+}
+
+.sampleGallery .imageWrapper {
+  width: 100%;
+}
+
+.sampleGallery .image {
+  background: none;
+}

@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 
 import './Albums.css';
 import { API_ROOT } from '../constants.js';
+import Image from '../components/Image';
 
 class Albums extends Component {
 
@@ -35,12 +36,15 @@ class Albums extends Component {
   render() {
     let albums = null;
     if (this.state.albums) {
+      console.log('ALBUMS', this.state.albums);
       albums = this.state.albums.map(album =>
         <Album
           key={album.id}
           cover={album.data['album.album-cover'].value.main.url}
           title={album.data['album.title'].value[0].text}
           uid={album.uid}
+          height={album.data['album.album-cover'].value.main.dimensions.height}
+          width={album.data['album.album-cover'].value.main.dimensions.width}
         />
       )
     }
@@ -52,11 +56,18 @@ class Albums extends Component {
   }
 }
 
-export const Album = ({cover, title, uid, category = 'albums'}) => {
+export const Album = ({cover, title, uid, category = 'albums', height, width}) => {
+  console.log('HEIGHT', height, width);
   return (
     <Link className="album" to={`${category}/${uid}`}>
       <div className="album-image" >
-        <img src={cover} className="albumCover" alt="album" />
+        <Image
+          src={cover}
+          className="albumCover"
+          alt="album"
+          height={height}
+          width={width}
+        />
       </div>
       <span className="title">{title}</span>
     </Link>
