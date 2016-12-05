@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import Prismic from 'prismic.io';
+import {Image} from '@kristojorg/kc';
 
 import { API_ROOT } from '../constants';
 import './Home.css';
-import Image from '../components/Image';
 
 export default class Home extends Component {
 

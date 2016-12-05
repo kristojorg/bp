@@ -2,11 +2,10 @@
 import React, { Component } from 'react';
 import Prismic from 'prismic.io';
 import Lightbox from 'react-images';
-
+import {Image} from '@kristojorg/kc';
 
 import { API_ROOT } from '../constants.js';
 import './Gallery.css';
-import Image from '../components/Image';
 
 export default class Albums extends Component {
 
@@ -113,13 +112,15 @@ const ImageCust = ({url, index, openLightbox, height, width}) => {
   return (
     <a className="imageWrapper" onClick={() => openLightbox(index)}>
       <div className="contentWrapper" >
-        <Image
-          src={url}
-          className="image"
-          alt="Item"
-          height={height}
-          width={width}
-        />
+        <div>
+          <Image
+            src={url}
+            className="image"
+            alt="Item"
+            height={height}
+            width={width}
+          />
+        </div>
       </div>
     </a>
   )

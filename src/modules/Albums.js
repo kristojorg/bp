@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 import './Albums.css';
 import { API_ROOT } from '../constants.js';
-import Image from '../components/Image';
+import {Image} from '@kristojorg/kc';
 
 class Albums extends Component {
 

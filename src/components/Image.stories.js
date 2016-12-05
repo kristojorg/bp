@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import Image from './Image';
+import {Image} from '@kristojorg/kc';
 
 const testURL='https://prismic-io.s3.amazonaws.com/bea-helman/72688bef7bc7e0b909b0db765e1e0a757fd63dca_r2-01544-016a.jpg';
 const testURLTall='https://prismic-io.s3.amazonaws.com/bea-helman/ba6f413864b5f6aa12693d71a4c18fb04607b05d_img_4318.png';
