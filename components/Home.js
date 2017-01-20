@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Prismic from 'prismic.io';
 import {Image} from '@kristojorg/kc';
 
-import { API_ROOT } from '../constants';
+import { API_ROOT } from '../../constants';
 import './Home.css';
 
 export default class Home extends Component {
@@ -22,7 +22,7 @@ export default class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  getInitialProps() {
     Prismic.api(API_ROOT).then(api => {
       return api.getSingle('homepage');
     }).then(response => {
