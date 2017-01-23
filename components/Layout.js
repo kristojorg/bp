@@ -1,53 +1,91 @@
 import React from 'react';
-import Head from './Head';
 import styled from 'styled-components';
+import Link from 'next/link'
 
-import { media, Flex, flex } from '../components/styled';
+import Head from './Head';
+import { media } from '../components/styled';
 
 export default ({ children, title}) => (
-  <Root>
+  <AppWrapper>
     <Head title={title} />
-    <Header />
-
-    <Body>hi {children}</Body>
+    <Header>
+      <Link>
+        <Icon src="../static/Bea.svg" />
+        {/* <Title href="/">Bea Helman</Title> */}
+      </Link>
+    </Header>
+    <Body>
+      <SideNav>
+        <Link><NavLink href="/photos">Photos</NavLink></Link>
+        <Link><NavLink href="/writing">Writing</NavLink></Link>
+        <Link><NavLink href="/published">Published</NavLink></Link>
+        <Link><NavLink href="/contact">Contact</NavLink></Link>
+      </SideNav>
+      <Content>
+        {children}
+      </Content>
+    </Body>
     <Footer>
       <Email href="mailto:beatricehelman@gmail.com">
         beatricehelman@gmail.com
       </Email>
     </Footer>
-  </Root>
+  </AppWrapper>
 )
 
-const Body = styled.div`
-  ${flex()};
-  flex: 1;
-`
-
-const Root = styled.div`
+const AppWrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  ${flex(true)}
+  display: flex;
+  flex-direction: column;
 `
+const Header = styled.header`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -70px;
+`
+const Icon = styled.img`
+  height: 80px;
+  padding-top: 45px;
+  padding-right: 45px;
+`
+const Title = styled.a`
+  font-size: 2em;
+`
+const Body = styled.div`
+  display: flex;
+  flex: 1;
+`
+const SideNav = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  padding-right: 0;
+  margin-right: -20%;
+  z-index: 2;
+`
+const NavLink = styled.a`
+  margin: 1em;
+  font-size: 2em;
+  font-family: 'Monoton';
+  color: #c5392a;
+  line-height: 1;
+  text-decoration: none;
+  ${''/* border-bottom: 3px solid transparent; */}
 
+  &:hover {
+    box-shadow: inset 0 -4px 0 #673831;
+  }
+`
+const Content = styled.div`
+  flex: 1;
+  display: flex;
+`
 const Email = styled.a`
 
 `
-
 const Footer = styled.footer`
-  ${flex()}
+  display:flex;
   align-items: center;
   justify-content: center;
 `
-
-// const Title = styled.h1`
-//   ${media.tabletUp`color: red`}
-//   ${media.desktopUp`color: magenta`}
-//   ${media.phoneOnly`color:blue`};
-//
-// `
-
-const Header = () => (
-  <Flex >
-
-  </Flex>
-);
