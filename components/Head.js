@@ -9,7 +9,7 @@ export default ({ title = "Beatrice Helman", children }) => {
       <link
         rel="stylesheet"
         type="text/css"
-        href="https://fonts.googleapis.com/css?family=Monoton|Signika|Concert+One|Cabin"
+        href="https://fonts.googleapis.com/css?family=Shrikhand|Signika|Concert+One|Cabin"
       />
 
       <title>{title}</title>

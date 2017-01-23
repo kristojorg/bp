@@ -13,8 +13,9 @@ export default () => (
 )
 
 const HomeImg = styled.img`
-  width: 60vw;
-  height: 80vh;
+  width: 90vw;
+  height: 90vh;
+  z-index: -1;
   object-fit: contain;
 `
 

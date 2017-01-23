@@ -42,12 +42,12 @@ const AppWrapper = styled.div`
 const Header = styled.header`
   display: flex;
   justify-content: flex-end;
-  margin-bottom: -70px;
+  height: 0px;
 `
 const Icon = styled.img`
   height: 80px;
   padding-top: 45px;
-  padding-right: 45px;
+  padding-right: 65px;
 `
 const Title = styled.a`
   font-size: 2em;
@@ -57,21 +57,19 @@ const Body = styled.div`
   flex: 1;
 `
 const SideNav = styled.div`
+  width: 0;
   display: flex;
   flex-direction: column;
-  padding: 2em;
-  padding-right: 0;
-  margin-right: -20%;
   z-index: 2;
 `
 const NavLink = styled.a`
   margin: 1em;
   font-size: 2em;
-  font-family: 'Monoton';
+  font-family: 'Shrikhand';
   color: #c5392a;
   line-height: 1;
   text-decoration: none;
-  ${''/* border-bottom: 3px solid transparent; */}
+  transform: rotate(-10deg);
 
   &:hover {
     box-shadow: inset 0 -4px 0 #673831;
