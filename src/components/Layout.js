@@ -10,11 +10,11 @@ class Layout extends React.Component {
 
   constructor() {
     super();
-    this.state = {navOpen: false};
+    this.state = {navOpen: true};
   }
 
   closeMenu = () => {
-    this.setState({navOpen:false})
+    this.setState({navOpen:false});
   }
 
   render() {
@@ -78,10 +78,10 @@ const SideNav = styled.div`
   z-index: 2;
 
   ${''/* default on mobile and nav is closed */}
-  display: flex;
+  display: none;
   ${''/* if  either nav is open or not on mobile: */}
-  ${''/* ${({navOpen}) => navOpen ? css`display:flex` : ''} */}
-  ${''/* ${media.tabletUp`display:flex`} */}
+  ${({navOpen}) => navOpen ? css`display:flex` : ''}
+  ${media.tabletUp`display:flex`}
 `
 const NavLink = styled.a`
   margin: .7em;

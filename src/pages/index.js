@@ -1,15 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../components/Layout';
-
-
 export default () => (
-  <Layout>
+  <div>
     <HomePage>
       <HomeImg alt="home image" src="../static/unnamed.jpg" />
     </HomePage>
-  </Layout>
+  </div>
 )
 
 const HomeImg = styled.img`

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Layout from '../components/Layout';
-
 export default () => (
-  <Layout>Hi from photos</Layout>
+  <div>Hi from photos</div>
 )
