@@ -1,37 +1,25 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-import './Root.css';
-import Home from './modules/Home.js';
-import App from './modules/App.js';
-import Albums from './modules/Albums.js';
-import Writing from './modules/Writing';
-import Blog from './modules/Blog';
-import Gallery from './modules/Gallery';
-import FadeIn from './components/FadeIn';
-import SampleView from './modules/SampleView';
+import Contact from './pages/contact'
+import Home from './pages/index'
+import Photos from './pages/photos'
+import Published from './pages/published'
+import Writing from './pages/writing'
+import Layout from './components/Layout'
 
 const Root = () => {
 
   return(
-    <FadeIn>
-      <Router key="appRouteRouter" history={browserHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={Home}/>
-          <Route path="/albums" component={null} >
-            <IndexRoute component={Albums} />
-              <Route path="/albums/:album" component={Gallery}>
-                {/* <Route path="/:photo" component={Photo}/> */}
-              </Route>
-          </Route>
-          <Route path="/writing" >
-            <IndexRoute component={Writing} />
-              <Route path="/writing/:sample" component={SampleView} />
-          </Route>
-          <Route path="/blog" component={Blog}/>
-        </Route>
-      </Router>
-    </FadeIn>
+    <Router key="appRouteRouter" history={browserHistory}>
+      <Route path="/" component={Layout}>
+        <IndexRoute component={Home}/>
+        <Route path="/photos" component={Photos} />
+        <Route path="/writing" component={Writing} />
+        <Route path="/published" component={Published} />
+        <Route path="/contact" component={Contact} />
+      </Route>
+    </Router>
   );
 }
 
