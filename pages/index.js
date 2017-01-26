@@ -16,7 +16,7 @@ const HomeImg = styled.img`
   width: 90vw;
   height: 90vh;
   z-index: -1;
-  object-fit: contain;
+  object-fit: cover;
 `
 
 const HomePage = styled.div`

@@ -11,6 +11,7 @@ export default ({ title = "Beatrice Helman", children }) => {
         type="text/css"
         href="https://fonts.googleapis.com/css?family=Shrikhand|Signika|Concert+One|Cabin"
       />
+      {/* <script src="https://use.fontawesome.com/746245336f.js"></script> */}
 
       <title>{title}</title>
       {children}

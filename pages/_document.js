@@ -11,13 +11,12 @@ export default class MyDocument extends Document {
       style = styleSheet.getCSS();
     }
     catch (e) {
-      
+
     }
     return { ...page, style }
   }
 
   render () {
-    console.log('HERE');
     return (
       <html>
         <Head>

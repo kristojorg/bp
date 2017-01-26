@@ -7,12 +7,15 @@ const sizes = {
   desktopUp: 1200,
 }
 
+const query = (size, maxWidth= null) => (...args) => (
+  css`
+    @media (min-width: ${size/16}em) ${maxWidth ? css`(max-width: ${maxWidth/16}em)` : ''} {
+      ${css(...args)}
+    }
+  `
+)
+
 export const media = {
-  // phoneOnly: (...args) => {
-  //   console.log('args', args, ...args);
-  //   console.log('css', ...css(...args));
-  //   console.log('wwww', css`${css(args)}`);
-  // },
   phoneOnly: (...args) => css`
     @media (max-width: ${sizes.phoneOnly/16}em) {
       ${css(...args)}
@@ -28,6 +31,7 @@ export const media = {
       ${css(...args)}
     }
   `,
+  query
 }
 
 // // iterate through the sizes and create a media template
