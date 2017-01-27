@@ -10,34 +10,46 @@ class Layout extends React.Component {
 
   constructor() {
     super();
-    this.state = {navOpen: true};
+    this.state = {navOpen: false};
   }
 
   closeMenu = () => {
     this.setState({navOpen:false});
   }
 
+  openMenu = () => {
+    this.setState({navOpen: true});
+  }
+
   render() {
     const {children, title} = this.props;
+    const home = this.props.location.pathname==="/";
     return (
       <AppWrapper>
         {/* <Head title={title} /> */}
         <Header>
-          <Link to="/">
+          {!this.state.navOpen ?
+            <Menu onClick={this.openMenu} home={home} ><a>Menu</a></Menu>
+            : <div />
+          }
+          <HomeLink to="/" onClick={this.closeMenu}>
             <Icon src={Bea} />
-          </Link>
+          </HomeLink>
         </Header>
         <Body>
-          <SideNav navOpen={this.state.navOpen} >
-            {this.state.navOpen ?
-              <Close onClick={this.closeMenu}/>
-              : null
-            }
-            <Link><NavLink to="/photos">Photos</NavLink></Link>
-            <Link><NavLink to="/writing">Writing</NavLink></Link>
-            <Link><NavLink to="/published">Published</NavLink></Link>
-            <Link><NavLink to="/contact">Contact</NavLink></Link>
-          </SideNav>
+          {home || this.state.navOpen ?
+            <SideNav navOpen={this.state.navOpen} >
+              {this.state.navOpen ?
+                <Close onClick={this.closeMenu}/>
+                : null
+              }
+              <NavLink to="/photos" onClick={this.closeMenu}>Photos</NavLink>
+              <NavLink to="/writing" onClick={this.closeMenu}>Writing</NavLink>
+              <NavLink to="/published" onClick={this.closeMenu}>Published</NavLink>
+              <NavLink to="/contact" onClick={this.closeMenu}>Contact</NavLink>
+            </SideNav>
+            : null
+          }
           <Content navOpen={this.state.navOpen} >
             {children}
           </Content>
@@ -48,6 +60,24 @@ class Layout extends React.Component {
 }
 export default Layout;
 
+const buttonStyle = `
+  &:hover, &:active {
+    background: rgba(103, 56, 49, 0.27);
+    border-radius: 5px;
+  }
+`
+
+const linkStyles = `
+  margin: .4em;
+  font-size: 2em;
+  font-family: 'Shrikhand';
+  color: #c5392a;
+  text-decoration: none;
+  transform: rotate(-10deg);
+  padding: 0.3em;
+
+  ${buttonStyle}
+`
 const AppWrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -56,13 +86,27 @@ const AppWrapper = styled.div`
 `
 const Header = styled.div`
   display: flex;
-  justify-content: flex-end;
-  height: 0px;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+`
+const HomeLink = styled(Link)`
+  z-index: 5;
+`
+const Menu = styled.div`
+  ${linkStyles}
+  ${({home}) => home ? media.tabletUp`
+    visibility: hidden;
+  ` : ''}
 `
 const Icon = styled.img`
   height: 80px;
-  padding-top: 15px;
-  padding-right: 15px;
+  margin-top: 15px;
+  margin-right: 15px;
+  ${''/* padding: 0.3em; */}
+  ${''/* ${buttonStyle} */}
 `
 const Title = styled.a`
   font-size: 2em;
@@ -76,30 +120,30 @@ const SideNav = styled.div`
   padding-top: 5vh;
   flex-direction: column;
   z-index: 2;
+  align-items: flex-start;
 
   ${''/* default on mobile and nav is closed */}
   display: none;
-  ${''/* if  either nav is open or not on mobile: */}
-  ${({navOpen}) => navOpen ? css`display:flex` : ''}
-  ${media.tabletUp`display:flex`}
-`
-const NavLink = styled.a`
-  margin: .7em;
-  font-size: 2em;
-  font-family: 'Shrikhand';
-  color: #c5392a;
-  line-height: 1;
-  text-decoration: none;
-  transform: rotate(-10deg);
 
-  &:hover {
-    box-shadow: inset 0 -4px 0 #673831;
-  }
+  ${''/* if  either nav is open or not on mobile: */}
+  ${({navOpen}) => navOpen ? css`display:flex;` : ''}
+  ${media.tabletUp`
+    display: flex;
+    width: 0px;
+    flex: 0;
+  `}
+`
+// console.log('MEDIA', `this is returned: ${media.tabletUp`display:flex; color: blue`}`);
+const NavLink = styled(Link)`
+  ${linkStyles}
+
 `
 const SvgX = styled.svg`
-  color: #c5392a;
+  ${linkStyles}
+  fill: #c5392a;
   font-size: 2em;
   transform: none;
+  margin-top: 0px;
 `
 const Content = styled.div`
   flex: 1;
