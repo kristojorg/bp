@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import {css} from 'styled-components';
 
 // these sizes are arbitrary and you can set them to whatever you wish
 const sizes = {
