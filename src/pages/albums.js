@@ -22,7 +22,7 @@ const Albums = ({albums}) => (
 );
 export default Albums;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   align-items: start;
   flex-direction: row;
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   flex: 1;
 `
-const OuterWrapper = styled.div`
+export const OuterWrapper = styled.div`
   margin-top: 90px;
   max-width: 935px;
   display: flex;
@@ -45,12 +45,19 @@ const AlbumLink = styled(Link)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-decoration: none;
+`
+const Title = styled.h1`
+  font-family: ${props => props.theme.font};
+  margin-top: -0.5em;
+  color: ${props => props.theme.red};
 `
 const Album = ({slug, title, width, ...props}) => {
   console.log(width);
   return (
     <AlbumLink to={`albums/${slug}`}>
       <Image {...props} width={width} />
+      <Title>{title}</Title>
     </AlbumLink>
   )
 }

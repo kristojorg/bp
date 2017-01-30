@@ -22,8 +22,8 @@ const Image = ({src, details, width=THUMB_SIZE, height=THUMB_SIZE, ...props}) =>
     setHeight = height;
     setWidth = height * ratio;
   }
-  const newSrc = `${src}?fm=jpg&fl=progressive&w=${width}&h=${height}`
-  const large = `${src}?fm=jpg&fl=progressive&w=${width*2}&h=${height*2}`
+  const newSrc = `https:${src}?fm=jpg&fl=progressive&w=${width}&h=${height}`
+  const large = `https:${src}?fm=jpg&fl=progressive&w=${width*2}&h=${height*2}`
   return (
     <ImageStyle
       src={newSrc}
