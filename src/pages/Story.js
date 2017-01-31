@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import ReactMarkdown from 'react-markdown'
+import Markdown from 'react-remarkable'
 
 import {media} from '../components/styled'
 
@@ -15,7 +15,7 @@ export default ({stories, params}) => {
       <Wrapper>
         <Title>{story.fields.title}</Title>
         <Body>
-          <ReactMarkdown source={story.fields.post} />
+          <Markdown source={story.fields.post} />
         </Body>
       </Wrapper>
     </OuterWrapper>
