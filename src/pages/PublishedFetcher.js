@@ -22,7 +22,6 @@ export default class AlbumFetcher extends React.Component {
     })
   }
   render() {
-    console.log('publications', this.state.publications);
     const children = React.cloneElement(this.props.children, {publications: this.state.publications})
     return children;
   }
