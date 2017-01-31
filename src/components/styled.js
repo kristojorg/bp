@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import {css} from 'styled-components';
 
 // these sizes are arbitrary and you can set them to whatever you wish
 const sizes = {
@@ -7,9 +7,9 @@ const sizes = {
   desktopUp: 1200,
 }
 
-const query = (size, maxWidth= null) => (...args) => (
+const query = (size) => (...args) => (
   css`
-    @media (min-width: ${size/16}em) ${maxWidth ? css`(max-width: ${maxWidth/16}em)` : ''} {
+    @media (min-width: ${size/16}em) {
       ${css(...args)}
     }
   `
@@ -27,7 +27,7 @@ export const media = {
     }
   `,
   desktopUp: (...args) => css`
-    @media (min-width: ${(sizes.tabletUp + 1) / 16})em) {
+    @media (min-width: ${(sizes.tabletUp + 1) / 16})em)} {
       ${css(...args)}
     }
   `,

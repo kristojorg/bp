@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import HomeImage from './unnamed.jpg';
 
 export default () => (
-  <div>
+  <Wrapper>
     <HomePage>
-      <HomeImg alt="home image" src="../static/unnamed.jpg" />
+      <HomeImg alt="home image" src={HomeImage} />
     </HomePage>
-  </div>
+  </Wrapper>
 )
+
+const Wrapper = styled.div`
+  flex: 1;
+  display: flex;
+`
 
 const HomeImg = styled.img`
   width: 90vw;
