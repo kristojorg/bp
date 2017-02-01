@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const ImageStyle = styled.img`
   object-fit: contain;
   padding: 1em;
-  height: calc(100% - 2em);
+  ${''/* height: calc(100% - 2em); */}
+  min-height: 80%;
 `;
 
 const StretchedImage = ({src, details, ...props}) => {

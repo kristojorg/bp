@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router'
-import Bea from './Bea.svg'
+import Bea from '../assets/Bea.svg'
 
 // import Head from './Head';
 import { media } from '../components/styled';
@@ -44,9 +44,9 @@ class Layout extends React.Component {
                 : null
               }
               <NavLink to="/albums" onClick={this.closeMenu} rotate={-12} >Photos</NavLink>
-              <NavLink to="/writing" onClick={this.closeMenu} rotate={-8} >Writing</NavLink>
+              <NavLink to="/blog" onClick={this.closeMenu} rotate={-8} >Blog</NavLink>
               <NavLink to="/published" onClick={this.closeMenu} rotate={-4} >Published</NavLink>
-              <NavLink to="/contact" onClick={this.closeMenu} rotate={-7} >Contact</NavLink>
+              <NavLink to="/etc" onClick={this.closeMenu} rotate={-7} >etc</NavLink>
             </SideNav>
             : null
           }
@@ -69,9 +69,8 @@ const buttonStyle = `
 `
 
 const linkStyles = `
-  margin: .4em;
-  font-size: 2em;
-  font-family: 'Shrikhand';
+  font-size: 4em;
+  font-family: 'CandicePro-Regular';
   color: #c5392a;
   text-decoration: none;
   padding: 0.3em;

@@ -8,10 +8,10 @@ export default ({stories}) => (
   <OuterWrapper>
     <Wrapper>
       {stories && stories.map(story => (
-        <Story key={story.sys.id} to={`published/${story.fields.title}`}>
-          <Title to={`/writing/${story.fields.urlSlug}`}>{story.fields.title}</Title>
+        <Story key={story.sys.id} to={`/blog/${story.fields.title}`}>
+          <Title to={`/blog/${story.fields.urlSlug}`}>{story.fields.title}</Title>
           <Preview>this is a preview</Preview>
-          <ReadMore to={`/writing/${story.fields.urlSlug}`}>Read more →</ReadMore>
+          <ReadMore to={`/blog/${story.fields.urlSlug}`}>Read more →</ReadMore>
         </Story>
       ))}
     </Wrapper>

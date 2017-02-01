@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from '../components/Image'
+import StretchedImage from '../components/StretchedImage'
 
 const Gallery = ({albums, params}) => {
   if (!albums) return null;
@@ -10,7 +10,7 @@ const Gallery = ({albums, params}) => {
   return (
     <Wrapper>
       {images.map(image => (
-        <Image
+        <StretchedImage
           key={image.sys.id}
           src={image.fields.photo.fields.file.url}
           details={image.fields.photo.fields.file.details.image}
@@ -23,11 +23,12 @@ export default Gallery;
 
 const Wrapper = styled.div`
   margin-top: 90px;
-  max-width: 935px;
+  max-width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   flex: 1;
-`
+  flex-direction: row;
+  overflow-x: scroll;
+`;

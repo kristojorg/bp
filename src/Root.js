@@ -31,11 +31,11 @@ const Root = () => {
             <IndexRoute component={Publications} />
             <Route path="/published/:publication" component={Publication} />
           </Route>
-          <Route path="/writing" component={StoryFetcher} >
+          <Route path="/blog" component={StoryFetcher} >
             <IndexRoute component={Stories} />
-            <Route path="/writing/:story" component={Story} />
+            <Route path="/blog/:story" component={Story} />
           </Route>
-          <Route path="/contact" component={Contact} />
+          <Route path="/etc" component={Contact} />
         </Route>
       </Router>
     </ThemeProvider>
