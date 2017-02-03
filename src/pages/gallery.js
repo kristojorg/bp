@@ -31,6 +31,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   overflow-x: scroll;
   height: calc(100vh - 90px);
+  overflow-scrolling: touch;
 `;
 
 const ImageStyle = styled.img`
