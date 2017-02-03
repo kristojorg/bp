@@ -55,7 +55,7 @@ const Title = styled.h1`
 const Album = ({slug, title, width, ...props}) => {
   console.log(width);
   return (
-    <AlbumLink to={`albums/${slug}`}>
+    <AlbumLink to={`/albums/${slug}`}>
       <Image {...props} width={width} />
       <Title>{title}</Title>
     </AlbumLink>
