@@ -43,10 +43,10 @@ class Layout extends React.Component {
                 <Close onClick={this.closeMenu}/>
                 : null
               }
-              <NavLink to="/albums" onClick={this.closeMenu} rotate={-12} >Photos</NavLink>
-              <NavLink to="/blog" onClick={this.closeMenu} rotate={-8} >Blog</NavLink>
-              <NavLink to="/published" onClick={this.closeMenu} rotate={-4} >Published</NavLink>
-              <NavLink to="/etc" onClick={this.closeMenu} rotate={-7} >etc</NavLink>
+              <NavLink to="/albums" onClick={this.closeMenu} rotate={-15} >Photos</NavLink>
+              <NavLink to="/blog" onClick={this.closeMenu} rotate={-15} >Blog</NavLink>
+              <NavLink to="/published" onClick={this.closeMenu} rotate={-15} >Published</NavLink>
+              <NavLink to="/etc" onClick={this.closeMenu} rotate={-15} >etc</NavLink>
             </SideNav>
             : null
           }

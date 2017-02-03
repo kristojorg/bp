@@ -10,7 +10,7 @@ export default ({publications}) => {
       <Wrapper>
         {publications && publications.map(publication => (
           <Publication key={publication.sys.id} to={`published/${publication.fields.title}`}>
-            {publication.fields.title}
+            <Text>{publication.fields.title}</Text>
           </Publication>
         ))}
       </Wrapper>
@@ -27,6 +27,10 @@ const Publication = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 80px;
   margin: 1em;
+  text-decoration: none;
+`
+const Text = styled.span`
+  transform: rotate(-45deg);
 `

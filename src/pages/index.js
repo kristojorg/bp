@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import HomeImage from './unnamed.jpg';
 import Bow1 from '../assets/Bow1.png';
 import Bow2 from '../assets/Bow2.svg';
-// import Rose from '../assets/Rose.svg';
+import Rose from '../assets/Rose.svg';
 import Sparkle from '../components/Sparkle';
 
 
@@ -13,7 +13,7 @@ export default () => (
       <HomeImg alt="home image" src={HomeImage} />
       <Bow
         src={Bow1}
-        height="10%"
+        height="15%"
         rotate={-10}
         left="10%"
       />
@@ -24,13 +24,13 @@ export default () => (
         left="60%"
         top="30%"
       />
-      {/* <Bow
+      <Bow
         src={Rose}
         height="25%"
         rotate={90}
         left="50%"
         top="75%"
-      /> */}
+      />
     </HomePage>
     <Sparkle />
   </Wrapper>
@@ -63,5 +63,5 @@ const Bow = styled.img`
   left: ${props => props.left};
   height: ${props => props.height};
   transform: rotate(${props=> props.rotate}deg);
-  top: ${props => props.top};
+  top: ${props => props.top ? props.top : '50%'};
 `
