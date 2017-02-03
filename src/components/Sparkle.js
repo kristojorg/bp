@@ -1,14 +1,17 @@
 import React from 'react'
 
-const defaultCount = 500;
+const defaultCount = 50;
 const defaultColor = ["#c5392a","#C0C0C0"];
 const LIFE_SPAN = 1500;
-const SPEED_Y = 3;
+const SPEED_Y = 2;
 const SPEED_X = 1;
 const SPEED_MULTIPLIER = 1/10;
 
+const MOVE_COUNT = 0.5;
+const MOUSE_RANGE = 25;
+
 class sparkle {
-  constructor ({x,y,color,style,vx,vy, size}) {
+  constructor ({x,y,color,style,vx,vy, size, isMouse = false}) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -18,6 +21,7 @@ class sparkle {
     this.opacity = Math.random();
     this.fading = false;
     this.size = size;
+    this.isMouse = isMouse;
   }
 
   update = () => {
@@ -36,15 +40,11 @@ class sparkle {
   }
 }
 
-//init canvas
+// add event listener for mouse move
 
-// create a bunch of sparkles w random props
+// on mouse move spawn some new sparkles and add them to our list at the position of the mouse
 
-// paint function
-
-// update function
-
-// call paint and update every so often
+// do no regenerate mouse sparkles
 
 export default class SparkleView extends React.Component {
 
@@ -57,6 +57,8 @@ export default class SparkleView extends React.Component {
     this.sprites = [0,6,13,20];
     this.sprite.src = dataUri;
     this._spawnSparkles();
+
+    // window.addEventListener('mousemove', this._handleMouseMove);
   }
 
   _initCanvas = () => {
@@ -65,8 +67,7 @@ export default class SparkleView extends React.Component {
     this._canvas.style.top = '0';
     this._canvas.style.pointerEvents = 'none';
     this._canvasContext = this._canvas.getContext('2d');
-    this._canvas.width = window.innerWidth;
-    this._canvas.height = window.innerHeight;
+    this._resizeCanvas();
     document.body.appendChild(this._canvas);
     window.addEventListener('resize', this._resizeCanvas);
     window.requestAnimationFrame(this._go);
@@ -77,36 +78,53 @@ export default class SparkleView extends React.Component {
     this._canvas.height = window.innerHeight;
   }
 
+  _handleMouseMove = (e) => {
+    for( let i = 0; i < MOVE_COUNT; i++ ) {
+      const rand0 = Math.random() < 0.5 ? -1 : 1;
+      const rand1 = Math.random() < 0.5 ? -1 : 1;
+      const newX = (Math.random() * MOUSE_RANGE * rand0) + e.clientX + (25*Math.random());
+      const newY = (Math.random() * MOUSE_RANGE * rand1) + e.clientY + (25*Math.random());
+      this._sparkles.push(this._newSparkle(newX, newY, true));
+    }
+  }
+
   _spawnSparkles = () => {
     for( let i = 0; i < defaultCount; i++ ) {
       this._sparkles.push(this._newSparkle());
     }
   }
 
-  _newSparkle = () => {
+  _newSparkle = (x, y, isMouse) => {
     const color = defaultColor[ Math.floor(Math.random()*defaultColor.length) ];
     const rand0 = Math.random() < 0.5 ? -1 : 1;
     const rand1 = Math.random() < 0.5 ? -1 : 1;
     return new sparkle({
-      x: Math.floor(Math.random()*this._canvas.width),
-      y: Math.floor(Math.random()*this._canvas.height),
+      x: x ? x : Math.floor(Math.random()*this._canvas.width),
+      y: y ? y : Math.floor(Math.random()*this._canvas.height),
       color,
       style: this.sprites[ Math.floor(Math.random()*4) ],
       size: parseFloat((Math.random()*2).toFixed(2)),
       vx: Math.floor(Math.random() * SPEED_X * rand0)* SPEED_MULTIPLIER,
       vy: Math.floor(Math.random() * SPEED_Y * rand1)* SPEED_MULTIPLIER,
+      isMouse,
     });
   }
 
   _updateSparkles = () => {
-    for (let i = 0; i < this._sparkles.length; i++) {
+    let i = this._sparkles.length;
+    while (i--) {
+    // for (let i = 0; i < this._sparkles.length; i++) {
       const sparkle = this._sparkles[i];
       sparkle.update();
       // might need to check if it is off the canvas or has opacity 0 or something and create some new ones
 
       // check if sparkle has no opacity
       if (sparkle.opacity <= 0) {
-        this._sparkles[i] = this._newSparkle();
+        if (!sparkle.isMouse ) {
+          this._sparkles[i] = this._newSparkle();
+        } else {
+          this._sparkles.splice(i,1);
+        }
       }
       if (
         sparkle.x > this._canvas.width ||
@@ -114,7 +132,11 @@ export default class SparkleView extends React.Component {
         sparkle.y > this._canvas.height ||
         sparkle.y < 0
       ) {
-        this._sparkles[i] = this._newSparkle();
+        if (!sparkle.isMouse) {
+          this._sparkles[i] = this._newSparkle();
+        } else {
+          this._sparkles.splice(i,1);
+        }
       }
     }
   }
@@ -161,6 +183,7 @@ export default class SparkleView extends React.Component {
 
   componentWillUnmount () {
     document.body.removeChild(this._canvas);
+    window.removeEventListener('mousemove', this._handleMouseMove);
   }
 }
 
