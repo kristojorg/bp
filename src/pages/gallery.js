@@ -6,7 +6,6 @@ const Gallery = ({albums, params}) => {
   const slug = params.album;
   const album = albums.find(album => album.fields.slug === slug);
   const {images} = album.fields;
-  console.log(images);
   return (
     <Wrapper>
       {images.map(image => (
@@ -31,6 +30,7 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: row;
   overflow-x: scroll;
+  height: calc(100vh - 90px);
 `;
 
 const ImageStyle = styled.img`
