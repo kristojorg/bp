@@ -4,6 +4,7 @@ import HomeImage from './unnamed.jpg';
 import Bow1 from '../assets/Bow1.png';
 import Bow2 from '../assets/Bow2.svg';
 // import Rose from '../assets/Rose.svg';
+import Sparkle from '../components/Sparkle';
 
 
 export default () => (
@@ -31,6 +32,7 @@ export default () => (
         top="75%"
       /> */}
     </HomePage>
+    <Sparkle />
   </Wrapper>
 )
 
