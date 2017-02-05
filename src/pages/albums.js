@@ -48,8 +48,9 @@ const AlbumLink = styled(Link)`
   text-decoration: none;
 `
 const Title = styled.h1`
-  font-family: ${props => props.theme.font};
-  margin-top: -0.5em;
+  font-family: Futura;
+  font-weight: 200;
+  margin-top: 0;
   color: ${props => props.theme.red};
 `
 const Album = ({slug, title, width, ...props}) => {

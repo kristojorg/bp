@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import HomeImage from './unnamed.jpg';
 import Bow1 from '../assets/Bow1.png';
 import Bow2 from '../assets/Bow2.svg';
-import Rose from '../assets/Rose.svg';
 import Sparkle from '../components/Sparkle';
 
 
@@ -23,13 +22,6 @@ export default () => (
         rotate={14}
         left="60%"
         top="30%"
-      />
-      <Bow
-        src={Rose}
-        height="25%"
-        rotate={90}
-        left="50%"
-        top="75%"
       />
     </HomePage>
     <Sparkle />
