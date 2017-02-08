@@ -3,8 +3,17 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Message from './Message';
 import Phone from './Phone';
 import styled from 'styled-components';
+import {host} from 'storybook-host';
 
 storiesOf('Message', module)
+  .addDecorator(host({
+      title: 'An iMessage imitation',
+      align: 'center bottom',
+      height: '100%',
+      width: 400,
+      backdrop: 'papayawhip',
+      background: 'white'
+    }))
   .add('default', () => (
     <Wrapper>
       <Message>

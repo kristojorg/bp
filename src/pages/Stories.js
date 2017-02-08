@@ -3,20 +3,29 @@ import styled from 'styled-components'
 import {Link} from 'react-router'
 
 import {media} from '../components/styled'
+import {StoryView} from './Story';
 
 export default ({stories}) => (
   <OuterWrapper>
     <Wrapper>
       {stories && stories.map(story => (
-        <Story key={story.sys.id} to={`/blog/${story.fields.title}`}>
-          <Title to={`/blog/${story.fields.urlSlug}`}>{story.fields.title}</Title>
-          <Preview>this is a preview</Preview>
-          <ReadMore to={`/blog/${story.fields.urlSlug}`}>Read more →</ReadMore>
-        </Story>
+        <StoryView
+          key={story.sys.id}
+          title={story.fields.title}
+          body={story.fields.post}
+          date={story.fields.date}
+        />
       ))}
     </Wrapper>
   </OuterWrapper>
 )
+/*
+<Story key={story.sys.id} to={`/blog/${story.fields.title}`}>
+  <Title to={`/blog/${story.fields.urlSlug}`}>{story.fields.title}</Title>
+  <Preview>this is a preview</Preview>
+  <ReadMore to={`/blog/${story.fields.urlSlug}`}>Read more →</ReadMore>
+</Story>
+*/
 const Wrapper = styled.div`
   display: flex;
   align-items: stretch;

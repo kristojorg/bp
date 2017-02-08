@@ -27,10 +27,11 @@ const Publication = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 80px;
-  margin: 1em;
+  font-size: 55px;
+  margin: 2%;
   text-decoration: none;
 `
 const Text = styled.span`
   transform: rotate(-45deg);
+  text-align: center;
 `

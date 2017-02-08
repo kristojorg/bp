@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Markdown from 'react-remarkable'
+import moment from 'moment';
 
 import {media} from '../components/styled'
 
@@ -10,17 +11,28 @@ export default ({stories, params}) => {
   const story = stories.find(
     story => story.fields.urlSlug === slug
   );
+  console.log(story);
   return (
     <OuterWrapper>
-      <Wrapper>
-        <Title>{story.fields.title}</Title>
-        <Body>
-          <Markdown source={story.fields.post} />
-        </Body>
-      </Wrapper>
+      <StoryView
+        title={story.fields.title}
+        body={story.fields.post}
+        date={story.fields.date}
+      />
     </OuterWrapper>
   )
 }
+export const StoryView = ({title,body, date}) => (
+  <Wrapper>
+    <Header>
+      <Title>{title}</Title>
+      <Date>{moment(date).format('MMM Do YYYY')}</Date>
+    </Header>
+    <Body>
+      <Markdown source={body} />
+    </Body>
+  </Wrapper>
+)
 const Wrapper = styled.div`
   display: flex;
   align-items: stretch;
@@ -45,6 +57,20 @@ const Title = styled.h1`
   font-family: ${props => props.theme.font};
   font-size: 1.2rem;
   ${media.tabletUp`font-size: 2rem;`}
+  margin-bottom: 5px;
+  margin-right: 5px;
 `
 const Body = styled.div`
+`
+const Header = styled.div`
+  flex-direction: row;
+  display: flex;
+  align-items: baseline;
+  border-bottom: 1px solid #757575;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`
+const Date = styled.div`
+  color: #757575;
+  font-size: 1em;
 `

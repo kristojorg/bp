@@ -30,9 +30,8 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   position: relative;
   ${props => props.typing && anim};
-  transition: all 0.5s ease-out;
   ${props => props.typing && 'flex: 1'};
-  ${props => props.typing && 'transition: flex 0.5s ease-out'};
+  ${props => !props.typing && 'transition: flex 0.5s ease-out'};
   margin-top: 2px;
   margin-bottom: 2px;
 

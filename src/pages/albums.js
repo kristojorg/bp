@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {Link} from 'react-router'
 
 import Image from '../components/Image';
@@ -40,12 +40,20 @@ export const OuterWrapper = styled.div`
   align-items: flex-start;
   flex: 1;
 `
+const buttonStyle = `
+  &:hover, &:active {
+    background: rgba(103, 56, 49, 0.27);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+`
 const AlbumLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-decoration: none;
+  ${buttonStyle}
 `
 const Title = styled.h1`
   font-family: Futura;

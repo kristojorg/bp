@@ -89,7 +89,7 @@ const Wrapper = styled(Keyframes)`
   transition: all 0.5s ease-out;
   flex-direction: column;
   overflow: scroll;
-  height: 600px;
+  height: 480px;
   padding: 5px;
 
   /*${media.query(700)`
