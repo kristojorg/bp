@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
-import Markdown from 'react-remarkable'
 import Bow1 from '../assets/Bow1.png';
 import Phone from '../components/message/Phone';
+import Footer from '../components/Footer';
 import Rose from '../assets/Rose.svg';
-
 
 export default () => (
   <OuterWrapper>
-    <Wrapper>
+    <Wrapper >
       <Phone />
       <Bow
         src={Bow1}
@@ -27,24 +26,23 @@ export default () => (
         opacity="0.1"
       />
     </Wrapper>
+    <Footer />
   </OuterWrapper>
-)
+);
 const Wrapper = styled.div`
   display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   flex: 1;
   max-width: 600px;
-  max-height: 100%;
+  ${''/* height: 100%; */}
+  flex-direction: column;
+
 `
 const OuterWrapper = styled.div`
   margin-top: 90px;
   max-width: 935px;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
   flex: 1;

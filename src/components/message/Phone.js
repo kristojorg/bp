@@ -2,15 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Keyframes, Frame } from 'react-keyframes'
 
-import {media} from '../styled';
 import Message from './Message';
 
 export default () => (
-  <Wrapper loop={false} component="div">
-    <Frame duration={3000}>
+  <Wrapper loop={false} component="div" >
+    <Frame duration={1000}>
       <Message typing />
     </Frame>
-    <Frame duration={3000}>
+    <Frame duration={1000}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas
@@ -19,7 +18,7 @@ export default () => (
         Howdy.
       </Message>
     </Frame>
-    <Frame duration={7000}>
+    <Frame duration={5000}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas
@@ -29,7 +28,7 @@ export default () => (
       </Message>
       <Message typing />
     </Frame>
-    <Frame duration={4000}>
+    <Frame duration={2000}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas
@@ -43,7 +42,7 @@ export default () => (
         Howdy
       </Message>
     </Frame>
-    <Frame duration={7000}>
+    <Frame duration={6000}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas
@@ -77,8 +76,7 @@ export default () => (
       </Message>
     </Frame>
   </Wrapper>
-)
-
+);
 // typing for a hot sec
 // First message for even shorter
 // first message and typing
@@ -88,12 +86,6 @@ const Wrapper = styled(Keyframes)`
   display: flex;
   transition: all 0.5s ease-out;
   flex-direction: column;
-  overflow: scroll;
-  height: 480px;
   padding: 5px;
-
-  /*${media.query(700)`
-    transform-origin: top left;
-    transform: scale(1.2);
-  `};*/
+  overflow-y: scroll;
 `

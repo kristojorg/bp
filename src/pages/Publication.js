@@ -38,9 +38,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h1`
-  margin: 0;
-`
 const Scans = styled.div`
   max-width: 100vw;
   display: flex;

@@ -24,24 +24,23 @@ const pulse = keyframes`
     transform: scale(1.08);
   }
 `;
-const Wrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  position: relative;
-  ${props => props.typing && anim};
-  ${props => props.typing && 'flex: 1'};
-  ${props => !props.typing && 'transition: flex 0.5s ease-out'};
-  margin-top: 2px;
-  margin-bottom: 2px;
-
-`
 const anim = css`
   transform-origin: left bottom;
   animation:  1s ${pulse} infinite;
   animation-timing-function: ease-out;
   animation-direction: alternate;
 `;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  position: relative;
+  ${props => props.typing && anim};
+  ${props => props.typing ? 'flex: 1 1 100%' : 'flex-grow:0; flex-shrink: 0'};
+  ${props => !props.typing && 'transition: flex 0.5s ease-out'};
+  margin-top: 2px;
+  margin-bottom: 2px;
+`
 const systemFont = `font-family: -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue",

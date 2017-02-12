@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import {Link} from 'react-router'
 
 import Image from '../components/Image';
@@ -31,7 +31,7 @@ export const Wrapper = styled.div`
   flex: 1;
 `
 export const OuterWrapper = styled.div`
-  margin-top: 90px;
+  margin-top: 110px;
   max-width: 935px;
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +60,8 @@ const Title = styled.h1`
   font-weight: 200;
   margin-top: 0;
   color: ${props => props.theme.red};
+  text-transform: capitalize;
+  font-size: 1em;
 `
 const Album = ({slug, title, width, ...props}) => {
   console.log(width);

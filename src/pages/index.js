@@ -12,9 +12,17 @@ export default () => (
       <HomeImg alt="home image" src={HomeImage} />
       <Bow
         src={Bow1}
-        height="15%"
+        height="25%"
         rotate={-10}
-        left="10%"
+        left="5%"
+        bottom="5%"
+      />
+      <Bow
+        src={Bow1}
+        height="13%"
+        rotate={8}
+        left="20%"
+        bottom="45%"
       />
       <Bow
         src={Bow2}
@@ -55,5 +63,7 @@ const Bow = styled.img`
   left: ${props => props.left};
   height: ${props => props.height};
   transform: rotate(${props=> props.rotate}deg);
-  top: ${props => props.top ? props.top : '50%'};
+  top: ${props => props.top && props.top};
+  bottom: ${props => props.bottom && props.bottom};
+
 `
