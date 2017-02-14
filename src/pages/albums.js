@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
 `
 export const OuterWrapper = styled.div`
   margin-top: 110px;
-  max-width: 935px;
+  max-width: 1080px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
