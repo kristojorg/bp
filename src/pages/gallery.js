@@ -11,7 +11,7 @@ const Gallery = ({albums, params}) => {
   const album = albums.find(album => album.fields.slug === slug);
   const {images} = album.fields;
   return (
-    <Measure includeMargin={false}>
+    <Measure includeMargin={false} whitelist={['height']}>
       {dimensions => (
         <Wrapper>
           {images.map(image => (

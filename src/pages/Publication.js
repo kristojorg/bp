@@ -13,7 +13,7 @@ const Publication = ({ publications, params }) => {
   );
   const scans = publication.fields.scans;
   return (
-    <Measure includeMargin={false}>
+    <Measure includeMargin={false} whitelist={['height']}>
       {dimensions => (
         <Wrapper>
             {scans.map(scan => (
