@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router'
-import Bea from '../assets/Bea.svg'
+import Bea from '../assets/face.svg'
 
 // import Head from './Head';
 import { media } from '../components/styled';
@@ -81,7 +81,7 @@ const linkStyles = `
 `
 const AppWrapper = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 `
@@ -135,7 +135,6 @@ const SideNav = styled.div`
     flex: 0;
   `}
 `
-// console.log('MEDIA', `this is returned: ${media.tabletUp`display:flex; color: blue`}`);
 const NavLink = styled(Link)`
   ${linkStyles}
   transform: rotate(${({rotate}) => rotate}deg);
@@ -150,7 +149,7 @@ const Content = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-
+  overflow: hidden;
   ${({navOpen}) => navOpen ? css`
     display: none;
   ` : ''}

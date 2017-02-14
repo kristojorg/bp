@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {media} from '../styled'
 
 export const At = () => (
 <Svg version="1.1" width="24" height="28" viewBox="0 0 24 28">
@@ -15,6 +16,12 @@ export const Insta = () => (
 
 const Svg = styled.svg`
   fill: ${props => props.theme.red};
-  height: 22px;
+  height: 30px;
+  width: 30px;
   margin-right: 3px;
+  ${media.tabletUp`
+    height: 50px;
+    width: 50px;
+    margin-right: 7px;
+  `}
 `

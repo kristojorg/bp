@@ -6,10 +6,10 @@ import Message from './Message';
 
 export default () => (
   <Wrapper loop={false} component="div" >
-    <Frame duration={1000}>
+    <Frame duration={1500}>
       <Message typing />
     </Frame>
-    <Frame duration={1000}>
+    <Frame duration={500}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas
@@ -17,18 +17,18 @@ export default () => (
         Would I like it?
         Howdy.
       </Message>
-    </Frame>
-    <Frame duration={5000}>
-      <Message>
-        Beautiful rainbow colors.
-        Looks Like lots of real estate out in Texas
-        Dose your lodging have air conditioning?  Looks warm. Where next?
-        Would I like it?
-        Howdy.
-      </Message>
-      <Message typing />
     </Frame>
     <Frame duration={2000}>
+      <Message>
+        Beautiful rainbow colors.
+        Looks Like lots of real estate out in Texas
+        Dose your lodging have air conditioning?  Looks warm. Where next?
+        Would I like it?
+        Howdy.
+      </Message>
+      <Message typing />
+    </Frame>
+    <Frame duration={1500}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas
@@ -42,7 +42,7 @@ export default () => (
         Howdy
       </Message>
     </Frame>
-    <Frame duration={6000}>
+    <Frame duration={3000}>
       <Message>
         Beautiful rainbow colors.
         Looks Like lots of real estate out in Texas

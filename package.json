@@ -17,6 +17,7 @@
     "react-measure": "^1.4.5",
     "react-remarkable": "^1.1.1",
     "react-router": "^3.0.2",
+    "recompose": "^0.22.0",
     "styled-components": "2.0.0-0"
   },
   "scripts": {

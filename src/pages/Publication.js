@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Wrapper} from './gallery'
+import Measure from 'react-measure';
 import StretchedImage from '../components/StretchedImage'
 
+
 const Publication = ({ publications, params }) => {
-  console.log('PUBLICATIONS', publications);
   if (!publications) return null;
   const title = params.publication;
   const publication = publications.find(
@@ -11,38 +13,20 @@ const Publication = ({ publications, params }) => {
   );
   const scans = publication.fields.scans;
   return (
-    <Wrapper>
-      {/* <Title>{title}</Title> */}
-      <Scans>
-        {scans.map(scan => (
-            <StretchedImage
-              key={scan.sys.id}
-              src={scan.fields.file.url}
-              details={scan.fields.file.details.image}
-            />
-        ))}
-      </Scans>
-    </Wrapper>
+    <Measure includeMargin={false}>
+      {dimensions => (
+        <Wrapper>
+            {scans.map(scan => (
+                <StretchedImage
+                  key={scan.sys.id}
+                  src={scan.fields.file.url}
+                  details={scan.fields.file.details.image}
+                  windowDimensions={dimensions}
+                />
+            ))}
+        </Wrapper>
+      )}
+    </Measure>
   );
 };
 export default Publication;
-
-const Wrapper = styled.div`
-  margin-top: 90px;
-  max-width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  flex-direction: column;
-`;
-
-const Scans = styled.div`
-  max-width: 100vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  overflow-x: scroll;
-  flex: 1;
-`

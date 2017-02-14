@@ -26,7 +26,6 @@ export default class Home extends Component {
     Prismic.api(API_ROOT).then(api => {
       return api.getSingle('homepage');
     }).then(response => {
-      console.log("Documents: ", response);
       this.setState({
         banner: response.data['homepage.mainPhoto'].value.main.url,
         dimensions: response.data['homepage.mainPhoto'].value.main.dimensions,

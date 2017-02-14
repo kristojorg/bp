@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router'
+import Sparkle from '../components/Sparkle'
 
 import Image from '../components/Image';
 
@@ -18,6 +19,7 @@ const Albums = ({albums}) => (
         />
       ))}
     </Wrapper>
+    <Sparkle />
   </OuterWrapper>
 );
 export default Albums;
@@ -64,7 +66,6 @@ const Title = styled.h1`
   font-size: 1em;
 `
 const Album = ({slug, title, width, ...props}) => {
-  console.log(width);
   return (
     <AlbumLink to={`/albums/${slug}`}>
       <Image {...props} width={width} />

@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router'
+import Sparkle from '../components/Sparkle'
+
 
 import {OuterWrapper, Wrapper} from './albums'
 
@@ -14,6 +16,7 @@ export default ({publications}) => {
           </Publication>
         ))}
       </Wrapper>
+      <Sparkle />
     </OuterWrapper>
   )
 }
