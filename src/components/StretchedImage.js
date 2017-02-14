@@ -7,6 +7,7 @@ const ImageStyle = styled.img`
   width: ${props => props.width}px;
   padding: ${props => props.padding}px;
   max-width: calc(100% - ${props => 2*props.padding}px);
+  background: blue;
 `;
 
 // change the 3000 to window.innerWidth
@@ -15,33 +16,54 @@ const ImageStyle = styled.img`
 
 export default class StretchedImage extends React.Component {
   constructor (props) {
-    super();
-    this._updateSize(props.windowDimensions.height, 3000);
+    super(props);
+    this.state = {
+      windowWidth: window.innerWidth
+    }
+    this._updateSources(props.windowDimensions.height, this.state.windowWidth);
+    this._updateSize(props.windowDimensions.height);
+    window.addEventListener('resize', this._windowWidthChange);
   }
 
-  shouldComponentUpdate(nextProps) {
+  _windowWidthChange = () => {
+    window.requestAnimationFrame(() => this.setState({
+      windowWidth: window.innerWidth
+    }));
+  }
+
+  _maybeUpdateSrc = (nextHeight, nextWidth) => {
     //only update if the image gets larger than you've ever recorded it.
     if (
-      nextProps.windowDimensions.height > this.maxHeight
-      // nextProps.windowDimensions.width > this.maxWidth
+      nextHeight > this.srcHeight ||
+      nextWidth > this.srcWidth
     ) {
-      return true;
+      this._updateSources(nextHeight, nextWidth);
     }
-    return true;
-  }
-  componentWillUpdate(nextProps) {
-    this._updateSize(nextProps.windowDimensions.height, 3000);
   }
 
-  _updateSize(newHeight, newWidth) {
+  componentWillUpdate(nextProps, nextState) {
+    this._updateSize(nextProps.windowDimensions.height, nextState.windowWidth);
+  }
+
+  _updateSize = (newHeight, newWidth = this.state.windowWidth) => {
     this.maxHeight = Math.floor(newHeight);
     this.maxWidth = Math.floor(newWidth);
+    this._maybeUpdateSrc(this.maxHeight, this.maxWidth);
+  }
+
+  _updateSources = (maxHeight, maxWidth) => {
+    //create sources
+    this.srcHeight = maxHeight;
+    this.srcWidth = maxWidth;
+    this.newSrc = `https:${this.props.src}?fm=jpg&fl=progressive&h=${maxHeight}&w=${maxWidth}&q=80`;
+    this.larger = `https:${this.props.src}?fm=jpg&fl=progressive&h=${maxHeight * 2}&w=${maxWidth * 2}&q=80`;
+    this.largest = `https:${this.props.src}?fm=jpg&fl=progressive&h=${maxHeight * 3}&w=${maxWidth * 3}&q=80`;
   }
 
   render () {
-    const {src, details, ...props} = this.props;
+    const {details, src, ...props} = this.props;
     const {maxHeight, maxWidth } = this;
-    const padding = 0.05;
+    const padding = 0.01;//0.05;
 
     // first set it up to be the height of the container
     let setWidth, setHeight;
@@ -51,21 +73,20 @@ export default class StretchedImage extends React.Component {
 
     //then, if it is wider than container, resize it to be the width of the container and shrink the height.
 
-    //create sources
-    const newSrc = `https:${src}?fm=jpg&fl=progressive&h=${maxHeight}&w=${maxWidth}&q=80`;
-    const larger = `https:${src}?fm=jpg&fl=progressive&h=${maxHeight * 2}&w=${maxWidth}&q=80`;
-    const largest = `https:${src}?fm=jpg&fl=progressive&h=${maxHeight * 3}&w=${maxWidth}&q=80`;
-
     if (maxHeight === 0 || maxWidth === 0) return null;
     return (
         <ImageStyle
           width={setWidth}
           height={setHeight}
           padding={maxHeight * padding }
-          src={newSrc}
-          srcSet={`${larger} 2x, ${largest} 3x`}
+          src={this.newSrc}
+          srcSet={`${this.larger} 2x, ${this.largest} 3x`}
           {...props}
         />
     )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize');
   }
 }
