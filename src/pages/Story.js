@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import Markdown from 'react-remarkable'
-import moment from 'moment';
 
 import {media} from '../components/styled'
+
+function formatDate (date) {
+  return new Intl.DateTimeFormat("en-US").format(new Date(date));
+}
 
 export default ({stories, params}) => {
   if (!stories) return null;
@@ -26,7 +29,7 @@ export const StoryView = ({title,body, date}) => (
   <Wrapper>
     <Header>
       <Title>{title}</Title>
-      <Date>{moment(date).format('MMM Do YYYY')}</Date>
+      <DateDiv>{formatDate(date)}</DateDiv>
     </Header>
     <Body>
       <Markdown source={body} />
@@ -70,7 +73,7 @@ const Header = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 `
-const Date = styled.div`
+const DateDiv = styled.div`
   color: #757575;
   font-size: 1em;
 `
