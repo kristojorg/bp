@@ -7,7 +7,7 @@ const sizes = {
   desktopUp: 1200,
 }
 
-const query = (size) => (...args) => (
+export const query = (size) => (...args) => (
   css`
     @media (min-width: ${size/16}em) {
       ${css(...args)}

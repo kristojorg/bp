@@ -143,7 +143,7 @@ class SparkleView extends React.Component {
 
     // loop through the sparkles and draw them
     for (const sparkle of this._sparkles) {
-      // update the type if image if need be
+      // update the type of image if need be
       const modulus = Math.floor(Math.random()*7);
 
       if( Math.floor(time) % modulus === 0 ) {

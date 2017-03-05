@@ -4,8 +4,8 @@ import styled from 'styled-components'
 export const THUMB_SIZE = 300;
 
 const ImageStyle = styled.img`
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
+  ${''/* width: ; */}
+  height: calc(100% - 55px);
   object-fit: contain;
   margin: 10px;
 `;
@@ -28,8 +28,6 @@ const Image = ({src, details, width=THUMB_SIZE, height=THUMB_SIZE, ...props}) =>
     <ImageStyle
       src={newSrc}
       srcSet={large + " 2x"}
-      width={width}
-      height={height}
       {...props}
     />
   )
