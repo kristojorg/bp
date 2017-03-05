@@ -4,7 +4,7 @@ import {ThemeProvider} from 'styled-components';
 
 import Contact from './pages/contact'
 import Home from './pages/index'
-import Albums from './pages/albums'
+import Albums from './pages/albums2'
 import PublishedFetcher from './pages/PublishedFetcher'
 import StoryFetcher from './pages/StoryFetcher'
 import Stories from './pages/Stories'
