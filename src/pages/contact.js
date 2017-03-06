@@ -35,11 +35,13 @@ const Wrapper = styled.div`
   max-width: 600px;
   ${''/* height: 100%; */}
   flex-direction: column;
-
+  max-width: 935px;
+  min-width: 700px;
+  margin: auto;
 `
 const OuterWrapper = styled.div`
   margin-top: 90px;
-  max-width: 935px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

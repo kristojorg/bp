@@ -24,6 +24,7 @@ export default ({albums}) => {
     <WindowSize>
       {(height, width) => (
         <DesktopWrapper>
+          <Sparkle />
           <ImageLoader
             images={imagesIn}
             maxHeight={width > layoutBreakpoint ? desktopHeightPixels : height}

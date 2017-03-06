@@ -40,12 +40,12 @@ const Text = styled.span`
 `
 const OuterWrapper = styled.div`
   margin-top: 110px;
-  max-width: 1080px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 `
 const Wrapper = styled.div`
@@ -55,4 +55,5 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   flex: 1;
+  max-width: 1080px;
 `
