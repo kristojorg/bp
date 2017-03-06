@@ -32,7 +32,10 @@ export default ({albums}) => {
             {(albumsOut,loadAnotherOne) => (
               <AlbumsWrapper>
                 {albumsOut.map(album => (
-                  <Album key={album.meta.id}>
+                  <Album
+                    key={album.meta.id}
+                    to={`/albums/${album.meta.slug}`}
+                  >
                       <Image
                         src={album.src}
                         srcSet={album.srcset}
@@ -70,10 +73,10 @@ const AlbumsWrapper = styled.div`
     align-items: stretch;
   `}
 `
-const Album = styled.div`
+const Album = styled(Link)`
   margin-bottom: 40px;
   margin-top: 35px;
-
+  text-decoration: none;
   ${query(layoutBreakpoint)`
     margin: 0px 70px;
     height: ${desktopHeight};
