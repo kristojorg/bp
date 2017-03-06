@@ -14,10 +14,11 @@ export default class AlbumFetcher extends React.Component {
 
   componentDidMount(){
     api.getEntries({
-      'content_type':galleryId
+      'content_type':galleryId,
+      'order': 'sys.updatedAt'
     }).then(entries => {
       this.setState({
-        albums: entries.items
+        albums: entries.items.reverse()
       })
     })
   }

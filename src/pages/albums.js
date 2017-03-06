@@ -62,14 +62,14 @@
 //     align-items: stretch;
 //   `}
 // `
-// // export const Wrapper = styled.div`
-// //   display: flex;
-// //   align-items: start;
-// //   flex-direction: row;
-// //   flex-wrap: wrap;
-// //   justify-content: space-around;
-// //   flex: 1;
-// // `
+// export const Wrapper = styled.div`
+//   display: flex;
+//   align-items: start;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+//   flex: 1;
+// `
 // const AlbumLink = styled(Link)`
 //   display: flex;
 //   justify-content: center;

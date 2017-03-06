@@ -133,6 +133,7 @@ const SideNav = styled.div`
     display: flex;
     width: 0px;
     flex: 0;
+    margin-top: -50px;
   `}
 `
 const NavLink = styled(Link)`
