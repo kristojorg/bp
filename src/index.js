@@ -14,7 +14,12 @@ const blackList = ['top', 'right', 'bottom', 'left'];
 
 ReactDOM.render(
   <Measure blackList={blackList}>
-    {dimensions => <ContextRoot dimensions={dimensions} />}
+    {dimensions => {
+      console.log('DIMENS', dimensions);
+      return (
+        <ContextRoot dimensions={dimensions} />
+      )
+    }}
   </Measure>,
   document.getElementById('root')
 );

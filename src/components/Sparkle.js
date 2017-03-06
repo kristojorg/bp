@@ -170,7 +170,9 @@ class SparkleView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.bodyDimensions.height !== this.props.bodyDimensions.height) {
+    if (prevProps.bodyDimensions.height !== this.props.bodyDimensions.height ||
+      prevProps.bodyDimensions.width !== this.props.bodyDimensions.width
+    ) {
       this._resizeCanvas(this.props.bodyDimensions);
     }
   }
@@ -181,7 +183,6 @@ class SparkleView extends React.Component {
 
   componentWillUnmount () {
     document.body.removeChild(this._canvas);
-    window.removeEventListener('mousemove', this._handleMouseMove);
   }
 }
 

@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 `
 const OuterWrapper = styled.div`
   margin-top: 90px;
-  max-width: 935px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
