@@ -150,6 +150,7 @@ const Content = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   overflow: hidden;
   ${({navOpen}) => navOpen ? css`
     display: none;
