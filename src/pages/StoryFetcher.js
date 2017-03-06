@@ -14,10 +14,11 @@ export default class StoryFetcher extends React.Component {
 
   componentDidMount(){
     api.getEntries({
-      'content_type':WRITING_ID
+      'content_type':WRITING_ID,
+      'order': 'sys.createdAt'
     }).then(entries => {
       this.setState({
-        stories: entries.items
+        stories: entries.items.reverse()
       })
     })
   }

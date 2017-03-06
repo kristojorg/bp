@@ -11,7 +11,7 @@ export default ({stories}) => (
           key={story.sys.id}
           title={story.fields.title}
           body={story.fields.post}
-          date={story.fields.date}
+          date={story.sys.createdAt}
         />
       ))}
     </Wrapper>

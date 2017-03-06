@@ -5,7 +5,11 @@ import Markdown from 'react-remarkable'
 import {media} from '../components/styled'
 
 function formatDate (date) {
-  return new Intl.DateTimeFormat("en-US").format(new Date(date));
+  try{
+    return new Intl.DateTimeFormat("en-US").format(new Date(date));
+  } catch (e) {
+    return '';
+  }
 }
 
 export default ({stories, params}) => {
@@ -14,25 +18,24 @@ export default ({stories, params}) => {
   const story = stories.find(
     story => story.fields.urlSlug === slug
   );
-  console.log(story);
   return (
     <OuterWrapper>
       <StoryView
         title={story.fields.title}
         body={story.fields.post}
-        date={story.fields.date}
+        date={story.sys.createdAt}
       />
     </OuterWrapper>
   )
 }
 export const StoryView = ({title,body, date}) => (
-  <Wrapper>
+  <Wrapper className="blog-post">
     <Header>
       <Title>{title}</Title>
       <DateDiv>{formatDate(date)}</DateDiv>
     </Header>
     <Body>
-      <Markdown source={body} />
+      <Markdown source={body} options={{html:true}}/>
     </Body>
   </Wrapper>
 )
@@ -45,6 +48,18 @@ const Wrapper = styled.div`
   flex: 1;
   max-width: 600px;
   padding: 1rem;
+  margin-bottom: 50px;
+
+  img {
+        max-width: 600;
+        object-fit: contain;
+        width: 100%;
+        margin: 10px 0px;
+  }
+  video {
+    width: 100%;
+    max-height: 80vh;
+  }
 `
 const OuterWrapper = styled.div`
   margin-top: 90px;
@@ -69,11 +84,13 @@ const Header = styled.div`
   flex-direction: row;
   display: flex;
   align-items: baseline;
-  border-bottom: 1px solid #757575;
+  border-bottom: ${props=> props.border && `1px solid #757575`};
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 `
 const DateDiv = styled.div`
-  color: #757575;
+  color: #abaaaa;
   font-size: 1em;
+  padding-right: 3px;
 `

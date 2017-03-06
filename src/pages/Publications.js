@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 import Sparkle from '../components/Sparkle'
 
 
-import {OuterWrapper, Wrapper} from './albums'
+// import {Wrapper} from './albums'
 
 export default ({publications}) => {
   return (
@@ -37,4 +37,22 @@ const Publication = styled(Link)`
 const Text = styled.span`
   transform: rotate(-45deg);
   text-align: center;
+`
+const OuterWrapper = styled.div`
+  margin-top: 110px;
+  max-width: 1080px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex: 1;
+`
+const Wrapper = styled.div`
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex: 1;
 `
