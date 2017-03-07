@@ -1,6 +1,6 @@
 {
-  "name": "replacement",
-  "version": "0.1.0",
+  "name": "bea",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
@@ -18,6 +18,7 @@
     "react-remarkable": "^1.1.1",
     "react-router": "^3.0.2",
     "recompose": "^0.22.0",
+    "serve": "^4.0.1",
     "styled-components": "2.0.0-0"
   },
   "scripts": {
@@ -26,6 +27,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "serve ./build --single",
+    "now-start": "serve build/ --single",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   }
