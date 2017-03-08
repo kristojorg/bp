@@ -1,8 +1,8 @@
 import React from 'react'
 import getContext from 'recompose/getContext'
 
-const defaultDensity = 0.00050872; // multiply by height and width of canvas.
-const highDensity = 0.00050872;
+const defaultDensity = 0.00020872; // multiply by height and width of canvas.
+const highDensity = 0.00020872;
 const defaultColor = ["#c5392a","#C0C0C0"];
 const LIFE_SPAN = 1500;
 const SPEED_Y = 2;
