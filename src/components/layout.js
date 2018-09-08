@@ -22,13 +22,13 @@ const Layout = ({ children }) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: 'Bea Helman' },
+            { name: 'keywords', content: 'photography, photos, film, fashion' },
           ]}
         >
           <html lang="en" />
+          <link rel="stylesheet" href="https://use.typekit.net/gnf5kzt.css" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
             margin: '0 auto',
