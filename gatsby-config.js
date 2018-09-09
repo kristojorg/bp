@@ -7,8 +7,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Bea Helman',
+        short_name: 'Bea Helman',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',
@@ -24,5 +24,14 @@ module.exports = {
         accessToken: `f57de019bd52c30d556109032d22ede7b6b32c6e595d3a286a0758c782defece`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }
