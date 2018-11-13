@@ -1,0 +1,28 @@
+/* .top-heart {
+  position: absolute !important;
+  width: 50%;
+  transform: rotate(-10deg);
+} */
+
+.left-heart {
+  position: absolute !important;
+  width: 24%;
+  transform: rotate(-88deg);
+  top: 180px;
+}
+
+.bottom-heart {
+  position: absolute !important;
+  width: 30%;
+  transform: rotate(-172deg);
+  top: 250px;
+  left: 50px;
+}
+
+.right-heart {
+  position: absolute !important;
+  width: 45%;
+  transform: rotate(78deg);
+  top: 120px;
+  right: 97px;
+}
