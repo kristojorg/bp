@@ -5,6 +5,7 @@
   "author": "Kristo Jorgenson <kristo.jorgenson@gmail.com>",
   "dependencies": {
     "gatsby": "latest",
+    "gatsby-image": "^2.0.20",
     "gatsby-plugin-manifest": "latest",
     "gatsby-plugin-offline": "latest",
     "gatsby-plugin-react-helmet": "latest",

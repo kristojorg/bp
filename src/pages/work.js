@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import { mediaQuery } from '../utils'
+import HorizontalScroll from 'react-scroll-horizontal'
 
 /**
  * 1. get the images on the page
@@ -18,20 +19,34 @@ const SecondPage = ({ data }) => {
 
   return (
     <Layout>
-      <HorizontalSlider>
+      {/* <HorizontalContainer> */}
+      {/* <HorizontalSlider> */}
+      <HorizontalScroll>
         {images.map(im => (
-          <Image
+          <Img
             key={im.node.photo.fluid.src}
-            im={im}
-            caption={im.node.caption}
+            im={im.node.photo.fluid}
+            // caption={im.node.caption}
           />
         ))}
-      </HorizontalSlider>
+      </HorizontalScroll>
+      {/* </HorizontalSlider> */}
+      {/* </HorizontalContainer> */}
     </Layout>
   )
 }
 
 export default SecondPage
+
+const HorizontalContainer = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  align-items: center;
+`
 
 const HorizontalSlider = styled.div`
   width: 80%;
@@ -44,18 +59,19 @@ const HorizontalSlider = styled.div`
   `};
 `
 
-const Image = ({ im, caption }) => {
-  return (
-    <Wrapper>
-      <StyledImg fluid={im.node.photo.fluid} />
-      <Cap>{caption || 'Peach for Peachypeach'}</Cap>
-    </Wrapper>
-  )
-}
+// const Image = ({ im, caption }) => {
+//   return (
+//     <Wrapper>
+//       <StyledImg fluid={im.node.photo.fluid} />
+//       <Cap>{caption || 'Peach for Peachypeach'}</Cap>
+//     </Wrapper>
+//   )
+// }
 
 const StyledImg = styled(Img)``
 
 const Wrapper = styled.div`
+  width: 90vw;
   max-width: 90%;
   margin: 5%;
 `

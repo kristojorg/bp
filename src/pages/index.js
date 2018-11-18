@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import styled from 'styled-components'
-import './hearts.css'
 
 // import Sparkle from '../components/Sparkle'
 import Sparkle from '../components/NewSparkle'
@@ -19,14 +18,8 @@ const IndexPage = ({ data: { h1, h2, h3 } }) => {
             <TopLabel>Work</TopLabel>
           </TopButton>
 
-          <Img
-            outerWrapperClassName="left-heart"
-            fluid={h3.childImageSharp.fluid}
-          />
-          <Img
-            outerWrapperClassName="bottom-heart"
-            fluid={h2.childImageSharp.fluid}
-          />
+          <LeftHeart fluid={h3.childImageSharp.fluid} />
+          <BottomHeart fluid={h2.childImageSharp.fluid} />
 
           <RightButton to="/about">
             <Img fluid={h1.childImageSharp.fluid} />
@@ -60,6 +53,7 @@ const TopLabel = styled(Label)`
   top: 40%;
   left: 26%;
   font-size: 48px;
+  z-index: 100;
 `
 
 const FullPage = styled.div`
@@ -98,30 +92,23 @@ const RightLabel = styled(Label)`
   position: absolute;
   left: 24%;
   top: 39%;
+  z-index: 100;
 `
-// const Top = styled(Img)`
-//   position: absolute;
-//   width: 50%;
-//   transform: rotate(-10deg);
-// `
 
-// const Left = styled(Img)`
-//   position: absolute;
-//   width: 24%;
-//   transform: rotate(-88deg);
-// `
+const LeftHeart = styled(Img)`
+  position: absolute !important;
+  width: 24%;
+  transform: rotate(-88deg);
+  top: 180px;
+`
 
-// const Bottom = styled(Img)`
-//   position: absolute;
-//   width: 30%;
-//   transform: rotate(-172deg);
-// `
-
-// const Right = styled(Img)`
-//   position: absolute;
-//   width: 45%;
-//   transform: rotate(88deg);
-// `
+const BottomHeart = styled(Img)`
+  position: absolute !important;
+  width: 30%;
+  transform: rotate(-172deg);
+  top: 250px;
+  left: 50px;
+`
 
 export const query = graphql`
   query {
