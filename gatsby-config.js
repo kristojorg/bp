@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: 'Bea Helman',
   },
-  plugins: [],
+  plugins: ['gatsby-plugin-styled-components'],
 }
