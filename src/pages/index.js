@@ -1,12 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-
 import ComingSoon from '../components/ComingSoon'
-import styled from 'styled-components'
-
-// import Sparkle from '../components/Sparkle'
-import Sparkle from '../components/NewSparkle'
 
 const IndexPage = () => {
   return (
