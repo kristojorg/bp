@@ -1,5 +1,6 @@
 import React from 'react'
 import ComingSoon from '../components/ComingSoon'
+import styled from 'styled-components'
 
 const IndexPage = () => {
   return (
