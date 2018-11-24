@@ -5,7 +5,6 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 
-// import Sparkle from '../components/Sparkle'
 import Sparkle from '../components/NewSparkle'
 
 const IndexPage = ({ data: { h1, h2, h3 } }) => {
@@ -14,15 +13,27 @@ const IndexPage = ({ data: { h1, h2, h3 } }) => {
       <FullPage>
         <Hearts>
           <TopButton to="/work">
-            <Img fluid={h3.childImageSharp.fluid} />
+            <Img
+              placeholderStyle={{ fill: '#fd000f' }}
+              fluid={h3.childImageSharp.fluid}
+            />
             <TopLabel>Work</TopLabel>
           </TopButton>
 
-          <LeftHeart fluid={h3.childImageSharp.fluid} />
-          <BottomHeart fluid={h2.childImageSharp.fluid} />
+          <LeftHeart
+            placeholderStyle={{ fill: '#fd000f' }}
+            fluid={h3.childImageSharp.fluid}
+          />
+          <BottomHeart
+            placeholderStyle={{ fill: '#fd000f' }}
+            fluid={h2.childImageSharp.fluid}
+          />
 
           <RightButton to="/about">
-            <Img fluid={h1.childImageSharp.fluid} />
+            <Img
+              placeholderStyle={{ fill: '#fd000f' }}
+              fluid={h1.childImageSharp.fluid}
+            />
             <RightLabel>About</RightLabel>
           </RightButton>
         </Hearts>

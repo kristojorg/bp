@@ -5,38 +5,57 @@ import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
 import { mediaQuery } from '../utils'
-import HorizontalScroll from 'react-scroll-horizontal'
+import HorizontalScroll from '../components/ScrollHorizontal'
 
 /**
- * 1. get the images on the page
- * 2. give them captions
- * 3. make them horizontal scrolling
+ *  @todo make it vertical scrolling for mobile
+ *  @todo update spring config
  */
 
 const SecondPage = ({ data }) => {
-  console.log(data)
   const images = data.allContentfulWork.edges
+  const house = data.house.childImageSharp
 
   return (
     <Layout>
-      {/* <HorizontalContainer> */}
-      {/* <HorizontalSlider> */}
-      <HorizontalScroll>
-        {images.map(im => (
-          <Img
-            key={im.node.photo.fluid.src}
-            im={im.node.photo.fluid}
-            // caption={im.node.caption}
-          />
-        ))}
-      </HorizontalScroll>
-      {/* </HorizontalSlider> */}
-      {/* </HorizontalContainer> */}
+      <HouseWrap to="/">
+        <HouseImage fixed={house.fixed} />
+      </HouseWrap>
+      <FullPage>
+        <HorizontalScroll
+          springConfig={{ stiffness: 150, damping: 15 }}
+          reverseScroll
+        >
+          {images.map(im => (
+            <Image
+              key={im.node.photo.fluid.src}
+              fluid={im.node.photo.fluid}
+              caption={im.node.caption}
+              aspectRatio={im.node.photo.fluid.aspectRatio}
+            />
+          ))}
+        </HorizontalScroll>
+      </FullPage>
     </Layout>
   )
 }
 
 export default SecondPage
+
+const HouseWrap = styled(Link)`
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  z-index: 100;
+`
+
+const HouseImage = styled(Img)``
+
+const FullPage = styled.div`
+  height: 98vh;
+  width: 100vw;
+  margin-top: 2vh;
+`
 
 const HorizontalContainer = styled.div`
   display: flex;
@@ -59,39 +78,36 @@ const HorizontalSlider = styled.div`
   `};
 `
 
-// const Image = ({ im, caption }) => {
-//   return (
-//     <Wrapper>
-//       <StyledImg fluid={im.node.photo.fluid} />
-//       <Cap>{caption || 'Peach for Peachypeach'}</Cap>
-//     </Wrapper>
-//   )
-// }
+const Image = ({ fluid, caption, aspectRatio }) => {
+  return (
+    <Wrapper aspectRatio={aspectRatio}>
+      <StyledImg fluid={fluid} />
+      {/* <Cap>{caption || 'Peach for Peachypeach'}</Cap> */}
+    </Wrapper>
+  )
+}
+// .73
+// .7319
 
-const StyledImg = styled(Img)``
+const StyledImg = styled(Img)`
+  /* flex: 1 0 100%; */
+`
 
 const Wrapper = styled.div`
-  width: 90vw;
-  max-width: 90%;
-  margin: 5%;
+  width: 80vw;
+  height: 100vh;
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* set the max width based on aspect of image */
+  max-width: calc((100vh - 5vw) * ${props => props.aspectRatio});
 `
-/**
- * ${mediaQuery(700)`
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-  `};
- */
 
-/**
- * each wrapper should be 90% of the viewport width
- * with a max width for extremely large views
- * then it is 90% the height
- * then the images need to fit within that
- */
-
-const Cap = styled.div``
+const Cap = styled.div`
+  flex: 0;
+`
 
 export const query = graphql`
   query workPage {
@@ -102,8 +118,16 @@ export const query = graphql`
           photo {
             fluid(maxWidth: 3000) {
               ...GatsbyContentfulFluid
+              aspectRatio
             }
           }
+        }
+      }
+    }
+    house: file(relativePath: { eq: "bea-house.png" }) {
+      childImageSharp {
+        fixed(width: 150) {
+          ...GatsbyImageSharpFixed
         }
       }
     }
