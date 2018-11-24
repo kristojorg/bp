@@ -7,10 +7,7 @@ import Layout from '../components/layout'
 import { mediaQuery } from '../utils'
 import HorizontalScroll from '../components/ScrollHorizontal'
 
-/**
- *  @todo make it vertical scrolling for mobile
- *  @todo update spring config
- */
+const MOBILE = 675
 
 const SecondPage = ({ data }) => {
   const images = data.allContentfulWork.edges
@@ -22,9 +19,10 @@ const SecondPage = ({ data }) => {
         <HouseImage fixed={house.fixed} />
       </HouseWrap>
       <FullPage>
-        <HorizontalScroll
+        <StyledHorizontalScroll
           springConfig={{ stiffness: 150, damping: 15 }}
           reverseScroll
+          minWidth={MOBILE}
         >
           {images.map(im => (
             <Image
@@ -34,13 +32,25 @@ const SecondPage = ({ data }) => {
               aspectRatio={im.node.photo.fluid.aspectRatio}
             />
           ))}
-        </HorizontalScroll>
+        </StyledHorizontalScroll>
       </FullPage>
     </Layout>
   )
 }
 
 export default SecondPage
+
+const StyledHorizontalScroll = styled(HorizontalScroll)`
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+
+  ${mediaQuery(MOBILE)`
+    display: inline-flex;
+    flex-direction: row;
+    overflow-y: hidden;
+  `}
+`
 
 const HouseWrap = styled(Link)`
   position: absolute;
@@ -94,15 +104,21 @@ const StyledImg = styled(Img)`
 `
 
 const Wrapper = styled.div`
-  width: 80vw;
-  height: 100vh;
-  padding: 5vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex: 1 0 auto;
+  width: 88vw;
+  margin: 6vw;
+  ${mediaQuery(MOBILE)`
+    width: 80vw;
+    height: 100vh;
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  /* set the max width based on aspect of image */
-  max-width: calc((100vh - 5vw) * ${props => props.aspectRatio});
+    /* set the max width based on aspect of image */
+    max-width: calc((100vh - 5vw) * ${props => props.aspectRatio});
+  
+  `}
 `
 
 const Cap = styled.div`

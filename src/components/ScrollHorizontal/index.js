@@ -36,6 +36,11 @@ export default class ScrollHorizontal extends Component {
   componentDidUpdate = () => this.calculate()
 
   onScrollStart(e) {
+    // check if you are in a horizontal scroll mode or not
+    if (window.innerWidth < this.props.minWidth) {
+      console.log('RETURNING')
+      return
+    }
     e.preventDefault()
     // If scrolling on x axis, change to y axis. Otherwise, just get the y deltas.
     // (Basically, this for Apple mice that allow horizontal scrolling by default)
@@ -151,7 +156,7 @@ export default class ScrollHorizontal extends Component {
           this.hScrollParent = r
         }}
         style={styles}
-        className={`scroll-horizontal ${this.props.className || ''}`}
+        className={`scroll-horizontal`}
       >
         {/* <Spring to={this.state.animValues}> */}
         <Motion style={{ z: spring(this.state.animValues, springConfig) }}>
@@ -164,7 +169,14 @@ export default class ScrollHorizontal extends Component {
               willChange: `transform`,
             }
 
-            return <div style={scrollingElementStyles}>{children}</div>
+            return (
+              <div
+                style={scrollingElementStyles}
+                className={this.props.className}
+              >
+                {children}
+              </div>
+            )
           }}
         </Motion>
         {/* </Spring> */}
@@ -180,6 +192,7 @@ ScrollHorizontal.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   children: PropTypes.array.isRequired,
+  minWidth: PropTypes.number,
 }
 
 ScrollHorizontal.defaultProps = {
@@ -188,4 +201,5 @@ ScrollHorizontal.defaultProps = {
   config: null,
   style: { width: `100%`, height: `100%` },
   className: null,
+  minWidth: 0,
 }
