@@ -7,6 +7,9 @@ module.exports = {
         tulip: "url('/tulip.png')",
       }),
     },
+    fontFamily: {
+      sans: ["ff-meta", "-apple-system", "sans-serif"],
+    },
   },
   variants: {
     extend: {},

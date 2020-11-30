@@ -18,6 +18,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
 @font-face {
   font-family: "ff-meta";
   src: url("/fonts/meta-normal.ttf");
