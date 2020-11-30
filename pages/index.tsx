@@ -57,10 +57,16 @@ const tulipArr = [...Array(tulips).keys()];
 
 export default function Home(): JSX.Element {
   return (
-    <div className="p-1 grid h-full grid-cols-ts grid-rows-ts gap-1">
+    <div
+      className="p-1 grid h-full justify-items-center gap-1"
+      style={{
+        gridTemplateColumns: `repeat(${spaces}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${spaces}, minmax(0, 1fr))`,
+      }}
+    >
       <Head>Bea Helman</Head>
       {tulipArr.map((row) => {
-        return <img src="/tulip.png" key={`${row}`} />;
+        return <img src="/tulip.png" className="max-h-full" key={`${row}`} />;
       })}
       {links.map((link) => (
         <Button key={link.href} config={link} />
