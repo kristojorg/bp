@@ -35,7 +35,9 @@ const Button: React.FC<{ href: string; className?: string }> = ({
 }) => {
   return (
     <Link href={href}>
-      <button className={`p-3 font-bold text-lg ${className}`}>
+      <button
+        className={`p-1 px-3 m-2 bg-white font-bold text-lg ${className}`}
+      >
         {children}
       </button>
     </Link>
