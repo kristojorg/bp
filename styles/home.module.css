@@ -1,6 +1,6 @@
 .photos {
-  top: 10%;
-  right: 10%;
+  grid-column: 10 / span 4;
+  grid-row: 2;
 }
 
 .contact {
