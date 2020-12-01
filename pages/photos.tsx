@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import fs from "fs/promises";
+import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import Link from "next/link";
@@ -77,7 +77,7 @@ export default function Photos({ photos }: { photos: string[] }): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const photos = await fs.readdir(path.join(process.cwd(), "/public/photos"));
+  const photos = fs.readdirSync(path.join(process.cwd(), "/public/photos"));
   return {
     props: {
       photos,
