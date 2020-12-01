@@ -27,15 +27,15 @@ const links: LinkConfig[] = [
     href: "/contact",
     row: 3,
     column: 3,
-    span: 1,
+    span: 2,
     color: "rgb(213, 141, 141)",
   },
   {
     display: "WRITING",
     href: "/writing",
     row: 5,
-    column: 3,
-    span: 1,
+    column: 2,
+    span: 2,
     color: "#9db2d9",
   },
   {
