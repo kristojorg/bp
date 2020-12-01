@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/home.module.css";
 import Image from "next/image";
 
 type LinkConfig = {
@@ -66,7 +65,17 @@ export default function Home(): JSX.Element {
     >
       <Head>Bea Helman</Head>
       {tulipArr.map((row) => {
-        return <img src="/tulip.png" className="max-h-full" key={`${row}`} />;
+        return (
+          <Image
+            priority
+            src="/tulip.png"
+            width={159}
+            height={300}
+            className="max-h-full"
+            key={`${row}`}
+            objectFit="contain"
+          />
+        );
       })}
       {links.map((link) => (
         <Button key={link.href} config={link} />
