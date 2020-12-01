@@ -20,14 +20,14 @@ const links: LinkConfig[] = [
     row: 1,
     column: 2,
     span: 1,
-    color: "white",
+    color: "mistyrose",
   },
   {
     display: "CONTACT",
     href: "/contact",
     row: 3,
     column: 3,
-    span: 2,
+    span: 1,
     color: "rgb(213, 141, 141)",
   },
   {
@@ -35,7 +35,7 @@ const links: LinkConfig[] = [
     href: "/writing",
     row: 5,
     column: 2,
-    span: 2,
+    span: 1,
     color: "#9db2d9",
   },
   {
@@ -56,16 +56,22 @@ const links: LinkConfig[] = [
   },
 ];
 
+const size = 500;
+
 export default function Photos({ photos }: { photos: string[] }): JSX.Element {
   return (
-    <div className="grid p-2 gap-2 grid-cols-4 justify-items-center">
+    <div
+      className="grid p-2 gap-2 justify-center justify-items-center"
+      style={{ gridTemplateColumns: `repeat(4, minmax(0, ${size}px))` }}
+    >
       {photos.map((name) => (
-        <div className="" key={name}>
+        <div className="relative" key={name}>
           <Image
+            key={name}
             src={`/photos/${name}`}
             objectFit="cover"
-            width={300}
-            height={300}
+            width={size}
+            height={size}
           />
         </div>
       ))}
@@ -93,7 +99,6 @@ const Button: React.FC<{ config: LinkConfig }> = ({ config }) => {
         style={{
           gridColumn: `${config.column} / span ${config.span}`,
           gridRow: `${config.row}`,
-          backgroundColor: config.color,
         }}
       >
         {config.display}
