@@ -9,10 +9,10 @@ export default function Writing({ posts }: { posts: string[] }): JSX.Element {
       <header>
         <h1>writing</h1>
       </header>
-      <ul className="m-10">
+      <ul className="m-10 ml-0 sm:ml-10">
         {posts.map((name) => (
-          <li key={name} className="pb-1">
-            <span className="font-sans pl-10 px-10 text-xs text-gray-400">
+          <li key={name} className="py-2">
+            <span className="font-sans pr-10 text-xs text-gray-400">
               a year ago
             </span>
             <Link href={`/writing/${name}`}>
