@@ -6,13 +6,26 @@ module.exports = {
       backgroundImage: () => ({
         tulip: "url('/tulip.png')",
       }),
-    },
-    fontFamily: {
-      sans: ["ff-meta", "-apple-system", "sans-serif"],
+      fontFamily: {
+        sans: ["ff-meta", "-apple-system", "sans-serif"],
+        mono: [
+          "Menlo",
+          // "Monaco",
+          // "Lucida Console",
+          // "Liberation Mono",
+          // "DejaVu Sans Mono",
+          // "Bitstream Vera Sans Mono",
+          // "Courier New",
+          // "monospace",
+          "serif",
+        ],
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textColor: ["visited"],
+    },
   },
   plugins: [],
 };
